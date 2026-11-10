@@ -563,6 +563,44 @@ figure { margin: 0; }
   font-style: italic;
 }
 
+/* ---------- 8 bis. QUESTIONS FRÉQUENTES (FAQ) ----------
+   Chaque question s'ouvre au clic (balise <details>, sans JavaScript). */
+.faq { display: grid; gap: 14px; margin-top: 16px; }
+.faq details {
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  transition: box-shadow .4s ease;
+}
+.faq details[open] { box-shadow: 0 14px 36px rgba(107, 90, 158, .18); }
+.faq summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;              /* retire le petit triangle par défaut */
+  padding: 16px 56px 16px 22px;
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--lavande-fonce);
+}
+.faq summary::-webkit-details-marker { display: none; }
+/* Le « + » doré qui devient « × » quand la question est ouverte */
+.faq summary::after {
+  content: "+";
+  position: absolute; right: 22px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--police-texte);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--or);
+  transition: transform .35s var(--douceur);
+}
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq summary:focus-visible { outline: 2px solid var(--or); outline-offset: -4px; border-radius: var(--rayon); }
+.faq details p { margin: 0; padding: 0 22px 20px; text-align: left; }
+
 /* ---------- 9. CONTACT ---------- */
 .section--contact { background: var(--lavande-pale); }
 .contact { display: grid; gap: 32px; }

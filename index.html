@@ -8,19 +8,27 @@
        RÉFÉRENCEMENT (SEO)
        Titre et description affichés dans Google.
        ========================================================= -->
-  <title>Les Mains Magiques Dax – Soin énergétique, magnétiseur & massage énergétique à Dax</title>
-  <meta name="description" content="Soin énergétique et massage énergétique à Dax (Landes). Magnétiseur avec plus de 20 ans d'expérience : soulagement des douleurs, soin de l'âme et reconnexion à soi. Rendez-vous au 07 74 63 23 71.">
-  <meta name="keywords" content="soin énergétique Dax, magnétiseur Dax, massage énergétique Dax, soin de l'âme Dax, thérapie holistique Landes">
+  <!-- Titre : environ 60 caractères maximum, sinon Google le coupe.
+       Description : environ 155 caractères maximum. -->
+  <title>Magnétiseur &amp; soin énergétique à Dax | Les Mains Magiques</title>
+  <meta name="description" content="Magnétiseur à Dax (Landes) : soin énergétique et massage énergétique pour soulager les douleurs et apaiser l'âme. 20 ans d'expérience. RDV au 07 74 63 23 71.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <!-- Adresse « officielle » de la page (évite les doublons dans Google) -->
+  <link rel="canonical" href="https://lesmainsmagiquesdax.com/">
   <meta name="theme-color" content="#9b87c9">
 
-  <!-- Aperçu lors d'un partage sur Facebook, WhatsApp…
-       ✏️ Une fois le site en ligne, mettre l'adresse complète de l'image
-       (ex : https://www.votre-site.fr/images/hero.jpg) -->
+  <!-- Aperçu lors d'un partage sur Facebook, WhatsApp, Messenger… -->
+  <meta property="og:site_name" content="Les Mains Magiques Dax">
   <meta property="og:title" content="Les Mains Magiques Dax – Un soin pour le corps, un soin pour l'âme">
-  <meta property="og:description" content="Soin énergétique, magnétisme et massage énergétique à Dax. Plus de 20 ans d'expérience.">
+  <meta property="og:description" content="Magnétiseur à Dax : soin énergétique et massage énergétique. Plus de 20 ans d'expérience. Rendez-vous au 07 74 63 23 71.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="images/hero.jpg">
+  <meta property="og:url" content="https://lesmainsmagiquesdax.com/">
+  <meta property="og:image" content="https://lesmainsmagiquesdax.com/images/hero.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1282">
+  <meta property="og:image:alt" content="Une main tendue dans des rayons de lumière dorée">
   <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
 
@@ -33,26 +41,120 @@
   <!-- Active les animations (sans JavaScript, tout reste simplement visible) -->
   <script>document.documentElement.classList.add('js');</script>
 
-  <!-- Données structurées pour Google (fiche "entreprise locale").
-       ✏️ Compléter l'adresse quand elle sera connue. -->
+  <!-- Données structurées pour Google (fiche "entreprise locale", tarifs, FAQ).
+       ✏️ Compléter l'adresse (streetAddress) quand elle sera connue.
+       ✏️ Si vous changez un tarif ou une réponse de la FAQ plus bas dans la
+       page, le changer aussi ici (les tarifs apparaissent 2 fois ici). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
-    "name": "Les Mains Magiques Dax",
-    "description": "Thérapie énergétique holistique : soin énergétique, magnétisme et massage énergétique à Dax.",
-    "telephone": "+33774632371",
-    "image": "images/hero.jpg",
-    "priceRange": "50 € – 65 €",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "[à compléter]",
-      "addressLocality": "Dax",
-      "postalCode": "40100",
-      "addressRegion": "Landes",
-      "addressCountry": "FR"
-    },
-    "areaServed": "Dax et ses environs"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://lesmainsmagiquesdax.com/#site",
+        "url": "https://lesmainsmagiquesdax.com/",
+        "name": "Les Mains Magiques Dax",
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "HealthAndBeautyBusiness",
+        "@id": "https://lesmainsmagiquesdax.com/#entreprise",
+        "name": "Les Mains Magiques Dax",
+        "description": "Magnétiseur à Dax : thérapie énergétique holistique, soin énergétique et massage énergétique. Plus de 20 ans d'expérience.",
+        "url": "https://lesmainsmagiquesdax.com/",
+        "telephone": "+33774632371",
+        "image": "https://lesmainsmagiquesdax.com/images/hero.jpg",
+        "logo": "https://lesmainsmagiquesdax.com/images/logo.svg",
+        "priceRange": "50 € – 65 €",
+        "currenciesAccepted": "EUR",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "[à compléter]",
+          "addressLocality": "Dax",
+          "postalCode": "40100",
+          "addressRegion": "Landes",
+          "addressCountry": "FR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 43.7102,
+          "longitude": -1.0536
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Dax" },
+          { "@type": "AdministrativeArea", "name": "Landes" }
+        ],
+        "knowsAbout": ["Magnétisme", "Soin énergétique", "Massage énergétique", "Thérapie holistique"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Mes soins",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "price": "50",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Soin énergétique",
+                "description": "Séance globale d'harmonisation de l'énergie, environ 1 h."
+              }
+            },
+            {
+              "@type": "Offer",
+              "price": "65",
+              "priceCurrency": "EUR",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Massage énergétique",
+                "description": "Massage aux huiles essentielles de lavande, de CBD et de camphre, associé au travail énergétique, environ 1 h."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://lesmainsmagiquesdax.com/#faq",
+        "inLanguage": "fr-FR",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Que se passe-t-il pendant un soin énergétique ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le soin énergétique est une séance globale d'harmonisation de l'énergie, d'environ une heure. Chaque soin est unique : pendant la séance, je peux recevoir une gestuelle ou une vision en accord avec chaque personne. C'est aussi un soin de l'âme, qui aide à libérer des blocages émotionnels et à se reconnecter à soi-même." }
+          },
+          {
+            "@type": "Question",
+            "name": "Pour quelles raisons consulter un magnétiseur à Dax ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Pour le soulagement des douleurs, quelle que soit leur nature, et des tensions installées dans le corps, mais aussi pour accompagner les blessures émotionnelles. Ces blessures se retrouvent souvent dans le corps : le soin s'adresse aux deux." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quand ressent-on les effets d'une séance ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Les résultats sont souvent rapides. Le travail énergétique continue ensuite d'agir plusieurs jours après le soin." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelle différence entre le soin énergétique et le massage énergétique ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le soin énergétique est une séance d'harmonisation de l'énergie. Le massage énergétique associe un massage aux huiles essentielles de lavande, de CBD et de camphre au travail énergétique." }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien coûte une séance ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Le soin énergétique coûte 50 € et le massage énergétique 65 €, pour une séance d'environ une heure." }
+          },
+          {
+            "@type": "Question",
+            "name": "Comment prendre rendez-vous ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Par téléphone, au 07 74 63 23 71. Le cabinet se trouve à Dax (40100), dans les Landes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Le soin remplace-t-il un traitement médical ?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Non. Les soins énergétiques ne remplacent en aucun cas un avis, un diagnostic ou un traitement médical, et n'impliquent l'arrêt d'aucun traitement en cours. En cas de problème de santé, consultez un médecin." }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -91,6 +193,7 @@
       <a href="#soin-de-l-ame">Un soin de l'âme</a>
       <a href="#holistique">Holistique ?</a>
       <a href="#soins">Mes soins</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
       <a href="tel:+33774632371" class="bouton bouton--petit">Appeler</a>
     </nav>
@@ -106,7 +209,7 @@
          ========================================================= -->
     <section class="accueil" id="accueil">
       <div class="accueil__fond">
-        <img class="accueil__image" src="images/hero.jpg"
+        <img class="accueil__image" src="images/hero.jpg" width="1920" height="1282" fetchpriority="high"
              onerror="this.onerror=null;this.src='images/hero-provisoire.svg';"
              alt="Une main tendue dans des rayons de lumière dorée">
       </div>
@@ -168,8 +271,9 @@
           <h2 class="apparition">Qui suis-je&nbsp;?</h2>
           <p class="apparition" style="--delai:.15s">Ce don m'accompagne depuis l'enfance. Pendant des années, j'ai aidé les autres
              bénévolement, simplement par besoin d'aider mon prochain.</p>
-          <p class="apparition" style="--delai:.3s">Aujourd'hui, avec plus de 20 ans d'expérience, je mets à votre service les
-             compétences et les connaissances acquises au fil de ces années de pratique énergétique.</p>
+          <p class="apparition" style="--delai:.3s">Aujourd'hui, avec plus de 20 ans d'expérience, je mets à votre service, dans mon
+             cabinet de Dax, les compétences et les connaissances acquises au fil de ces années de
+             magnétisme et de pratique énergétique.</p>
         </div>
       </div>
     </section>
@@ -231,7 +335,7 @@
          ========================================================= -->
     <section class="section section--soins" id="soins">
       <div class="conteneur">
-        <h2 class="apparition">Mes soins</h2>
+        <h2 class="apparition">Mes soins à Dax</h2>
 
         <div class="cartes">
           <!-- SOIN 1 -->
@@ -278,12 +382,72 @@
     </div>
 
     <!-- =========================================================
+         5 bis. QUESTIONS FRÉQUENTES (FAQ)
+         Chaque question est un bloc <details> : un clic l'ouvre.
+         ✏️ Si vous modifiez une réponse ici, la modifier aussi dans les
+         « données structurées » en haut de la page (partie FAQPage).
+         ========================================================= -->
+    <section class="section" id="faq">
+      <div class="conteneur conteneur--etroit">
+        <h2 class="apparition">Questions fréquentes</h2>
+
+        <div class="faq apparition" style="--delai:.15s">
+          <details>
+            <summary>Que se passe-t-il pendant un soin énergétique&nbsp;?</summary>
+            <p>Le soin énergétique est une séance globale d'harmonisation de l'énergie, d'environ une heure.
+               Chaque soin est unique&nbsp;: pendant la séance, je peux recevoir une gestuelle ou une vision en
+               accord avec chaque personne. C'est aussi un soin de l'âme, qui aide à libérer des blocages
+               émotionnels et à se reconnecter à soi-même.</p>
+          </details>
+
+          <details>
+            <summary>Pour quelles raisons consulter un magnétiseur à Dax&nbsp;?</summary>
+            <p>Pour le soulagement des douleurs, quelle que soit leur nature, et des tensions installées dans
+               le corps, mais aussi pour accompagner les blessures émotionnelles. Ces blessures se retrouvent
+               souvent dans le corps&nbsp;: le soin s'adresse aux deux.</p>
+          </details>
+
+          <details>
+            <summary>Quand ressent-on les effets d'une séance&nbsp;?</summary>
+            <p>Les résultats sont souvent rapides. Le travail énergétique continue ensuite d'agir plusieurs
+               jours après le soin.</p>
+          </details>
+
+          <details>
+            <summary>Quelle différence entre le soin énergétique et le massage énergétique&nbsp;?</summary>
+            <p>Le soin énergétique est une séance d'harmonisation de l'énergie. Le massage énergétique associe
+               un massage aux huiles essentielles de lavande, de CBD et de camphre au travail énergétique.</p>
+          </details>
+
+          <details>
+            <summary>Combien coûte une séance&nbsp;?</summary>
+            <p>Le soin énergétique coûte 50&nbsp;€ et le massage énergétique 65&nbsp;€, pour une séance d'environ
+               une heure.</p>
+          </details>
+
+          <details>
+            <summary>Comment prendre rendez-vous&nbsp;?</summary>
+            <p>Par téléphone, au <a href="tel:+33774632371">07 74 63 23 71</a>. Le cabinet se trouve à Dax (40100),
+               dans les Landes.</p>
+          </details>
+
+          <details>
+            <summary>Le soin remplace-t-il un traitement médical&nbsp;?</summary>
+            <p>Non. Les soins énergétiques ne remplacent en aucun cas un avis, un diagnostic ou un traitement
+               médical, et n'impliquent l'arrêt d'aucun traitement en cours. En cas de problème de santé,
+               consultez un médecin.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
          6. RENDEZ-VOUS & CONTACT
          ✏️ Compléter l'email, l'adresse et les réseaux sociaux.
          ========================================================= -->
     <section class="section section--contact" id="contact">
       <div class="conteneur">
-        <h2 class="apparition">Rendez-vous &amp; contact</h2>
+        <h2 class="apparition">Prendre rendez-vous à Dax</h2>
 
         <div class="contact">
           <div class="contact__infos apparition" data-anim="gauche">
@@ -327,7 +491,7 @@
   <footer class="pied">
     <svg class="pied__symbole" aria-hidden="true"><use href="#yinyang"/></svg>
     <p class="pied__nom">Les Mains Magiques Dax</p>
-    <p>Thérapie énergétique holistique · Dax (Landes) · <a href="tel:+33774632371">07 74 63 23 71</a></p>
+    <p>Magnétiseur &amp; thérapie énergétique holistique · Dax (Landes) · <a href="tel:+33774632371">07 74 63 23 71</a></p>
     <p class="pied__avertissement">Les soins énergétiques ne remplacent en aucun cas un avis,
        un diagnostic ou un traitement médical.</p>
     <p class="pied__liens">
