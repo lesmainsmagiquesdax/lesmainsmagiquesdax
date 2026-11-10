@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =========================================================
+       RÉFÉRENCEMENT (SEO)
+       Titre et description affichés dans Google.
+       ========================================================= -->
+  <title>Les Mains Magiques Dax – Soin énergétique, magnétiseur & massage énergétique à Dax</title>
+  <meta name="description" content="Soin énergétique et massage énergétique à Dax (Landes). Magnétiseur avec plus de 20 ans d'expérience : soulagement des douleurs, soin de l'âme et reconnexion à soi. Rendez-vous au 07 74 63 23 71.">
+  <meta name="keywords" content="soin énergétique Dax, magnétiseur Dax, massage énergétique Dax, soin de l'âme Dax, thérapie holistique Landes">
+  <meta name="theme-color" content="#9b87c9">
+
+  <!-- Aperçu lors d'un partage sur Facebook, WhatsApp…
+       ✏️ Une fois le site en ligne, mettre l'adresse complète de l'image
+       (ex : https://www.votre-site.fr/images/hero.jpg) -->
+  <meta property="og:title" content="Les Mains Magiques Dax – Un soin pour le corps, un soin pour l'âme">
+  <meta property="og:description" content="Soin énergétique, magnétisme et massage énergétique à Dax. Plus de 20 ans d'expérience.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/hero.jpg">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+
+  <!-- Polices : Cormorant Garamond (titres) + Nunito Sans (texte) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Active les animations (sans JavaScript, tout reste simplement visible) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Données structurées pour Google (fiche "entreprise locale").
+       ✏️ Compléter l'adresse quand elle sera connue. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Les Mains Magiques Dax",
+    "description": "Thérapie énergétique holistique : soin énergétique, magnétisme et massage énergétique à Dax.",
+    "telephone": "+33774632371",
+    "image": "images/hero.jpg",
+    "priceRange": "50 € – 65 €",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "[à compléter]",
+      "addressLocality": "Dax",
+      "postalCode": "40100",
+      "addressRegion": "Landes",
+      "addressCountry": "FR"
+    },
+    "areaServed": "Dax et ses environs"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Barre dorée de progression de lecture (en haut de l'écran) -->
+  <div class="progression" id="progression" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       SYMBOLE YIN-YANG (réutilisé plusieurs fois avec <use>)
+       ========================================================= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="yinyang" viewBox="-52 -52 104 104">
+      <circle r="50" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <path d="M0 -50 A50 50 0 0 1 0 50 A25 25 0 0 1 0 0 A25 25 0 0 0 0 -50Z" fill="currentColor"/>
+      <circle cy="-25" r="7" fill="currentColor"/>
+      <circle cy="25" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    </symbol>
+  </svg>
+
+  <!-- =========================================================
+       EN-TÊTE / MENU
+       ========================================================= -->
+  <header class="entete" id="entete">
+    <a href="#accueil" class="entete__marque" aria-label="Les Mains Magiques Dax – retour à l'accueil">
+      <svg class="logo logo--petit" viewBox="0 0 120 130" aria-hidden="true">
+        <g class="logo__spirale"><path d="M60 40 a2 2 0 0 1 4 0 a4 4 0 0 1 -8 0 a6 6 0 0 1 12 0 a8 8 0 0 1 -16 0 a10 10 0 0 1 20 0"/></g>
+        <g class="logo__lotus" transform="translate(0 4)">
+          <path d="M58 100 C44 102 32 98 26 90 C38 88 50 92 58 100Z"/>
+          <path d="M58 100 C72 102 84 98 90 90 C78 88 66 92 58 100Z"/>
+          <path d="M58 100 C46 98 38 88 38 78 C48 80 56 88 58 100Z"/>
+          <path d="M58 100 C70 98 78 88 78 78 C68 80 60 88 58 100Z"/>
+          <path d="M58 100 C50 90 52 78 58 70 C64 78 66 90 58 100Z"/>
+        </g>
+        <g class="logo__main">
+          <path d="M10 120 C36 128 80 126 102 106 C108 100 110 93 104 92 C99 91 94 98 86 102 C66 110 42 108 30 100 C26 92 20 86 15 90 C11 93 14 100 18 104 L10 107"/>
+          <path d="M100 101 C92 107 84 110 74 112"/>
+          <path d="M95 109 C88 114 80 117 70 118"/>
+        </g>
+      </svg>
+      <span>Les Mains Magiques</span>
+    </a>
+
+    <button class="menu-bouton" id="menu-bouton" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#qui-suis-je">Qui suis-je</a>
+      <a href="#soin-de-l-ame">Un soin de l'âme</a>
+      <a href="#holistique">Holistique ?</a>
+      <a href="#soins">Mes soins</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+33774632371" class="bouton bouton--petit">Appeler</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         1. ACCUEIL
+         🖼️ IMAGE : remplacer le fichier « images/hero.jpg » par votre
+         photo (même nom). Si le fichier manque, une image provisoire
+         (hero-provisoire.svg) s'affiche.
+         ========================================================= -->
+    <section class="accueil" id="accueil">
+      <div class="accueil__fond">
+        <img class="accueil__image" src="images/hero.jpg"
+             onerror="this.onerror=null;this.src='images/hero-provisoire.svg';"
+             alt="Une main tendue dans des rayons de lumière dorée">
+      </div>
+      <div class="accueil__voile"></div>
+      <!-- Particules de lumière qui flottent (dessinées par le JavaScript) -->
+      <canvas class="particules" id="particules" aria-hidden="true"></canvas>
+
+      <div class="accueil__contenu">
+        <div class="logo-aura">
+          <svg class="logo logo--grand logo--trace" viewBox="0 0 120 130" role="img" aria-label="Logo : main ouverte portant une fleur de lotus, surmontée d'une spirale">
+            <g class="logo__spirale"><path pathLength="1" d="M60 40 a2 2 0 0 1 4 0 a4 4 0 0 1 -8 0 a6 6 0 0 1 12 0 a8 8 0 0 1 -16 0 a10 10 0 0 1 20 0"/></g>
+            <g class="logo__lotus" transform="translate(0 4)">
+              <path pathLength="1" d="M58 100 C44 102 32 98 26 90 C38 88 50 92 58 100Z"/>
+              <path pathLength="1" d="M58 100 C72 102 84 98 90 90 C78 88 66 92 58 100Z"/>
+              <path pathLength="1" d="M58 100 C46 98 38 88 38 78 C48 80 56 88 58 100Z"/>
+              <path pathLength="1" d="M58 100 C70 98 78 88 78 78 C68 80 60 88 58 100Z"/>
+              <path pathLength="1" d="M58 100 C50 90 52 78 58 70 C64 78 66 90 58 100Z"/>
+            </g>
+            <g class="logo__main">
+              <path pathLength="1" d="M10 120 C36 128 80 126 102 106 C108 100 110 93 104 92 C99 91 94 98 86 102 C66 110 42 108 30 100 C26 92 20 86 15 90 C11 93 14 100 18 104 L10 107"/>
+              <path pathLength="1" d="M100 101 C92 107 84 110 74 112"/>
+              <path pathLength="1" d="M95 109 C88 114 80 117 70 118"/>
+            </g>
+          </svg>
+        </div>
+
+        <h1 class="accueil__titre">
+          <span class="mot" style="--i:0">Les</span>
+          <span class="mot" style="--i:1">Mains</span>
+          <span class="mot" style="--i:2">Magiques</span>
+          <span class="mot mot--or" style="--i:3">Dax</span>
+        </h1>
+        <p class="accueil__sous-titre entree" style="--d:1.5s">Thérapie énergétique holistique · Soin énergétique &amp; magnétisme à Dax</p>
+        <p class="accueil__accroche entree" style="--d:1.7s">« Un soin pour le corps, un soin pour l'âme »</p>
+
+        <ul class="points-forts">
+          <li class="entree" style="--d:1.9s">Soulagement des douleurs – résultats souvent rapides</li>
+          <li class="entree" style="--d:2.0s">Un soin de l'âme et une reconnexion à soi</li>
+          <li class="entree" style="--d:2.1s">Plus de <span class="compteur" data-cible="20">20</span> ans d'expérience</li>
+        </ul>
+
+        <a href="tel:+33774632371" class="bouton bouton--brillant entree" style="--d:2.3s">Prendre rendez-vous · 07 74 63 23 71</a>
+      </div>
+
+      <a href="#qui-suis-je" class="defiler" aria-label="Découvrir la suite"><span></span></a>
+    </section>
+
+    <!-- =========================================================
+         2. QUI SUIS-JE
+         ========================================================= -->
+    <section class="section" id="qui-suis-je">
+      <div class="conteneur duo">
+        <figure class="duo__image apparition" data-anim="gauche">
+          <img src="images/qui-suis-je.jpg" alt="Une main tendue vers une lumière dorée" loading="lazy">
+        </figure>
+        <div class="duo__texte">
+          <h2 class="apparition">Qui suis-je&nbsp;?</h2>
+          <p class="apparition" style="--delai:.15s">Ce don m'accompagne depuis l'enfance. Pendant des années, j'ai aidé les autres
+             bénévolement, simplement par besoin d'aider mon prochain.</p>
+          <p class="apparition" style="--delai:.3s">Aujourd'hui, avec plus de 20 ans d'expérience, je mets à votre service les
+             compétences et les connaissances acquises au fil de ces années de pratique énergétique.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="separateur apparition" aria-hidden="true"><svg><use href="#yinyang"/></svg></div>
+
+    <!-- =========================================================
+         3. UN SOIN DE L'ÂME (section mise en avant)
+         ========================================================= -->
+    <section class="section section--avant" id="soin-de-l-ame">
+      <div class="lueurs" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="conteneur duo duo--inverse">
+        <figure class="duo__image duo__image--arche apparition" data-anim="droite">
+          <img src="images/lotus.jpg" alt="Une fleur de lotus rose posée sur l'eau" loading="lazy">
+        </figure>
+        <div class="duo__texte">
+          <h2 class="apparition">Un soin de l'âme</h2>
+          <p class="apparition" style="--delai:.15s">Mon soin est énergétique, mais c'est aussi un soin de l'âme&nbsp;: il accompagne les
+             blessures de l'âme et vous aide à vous reconnecter à vous-même.</p>
+          <p class="apparition" style="--delai:.3s">À l'écoute de mon intuition, je vous offre une écoute empathique et active, et les
+             bons mots au bon moment.</p>
+        </div>
+      </div>
+
+      <div class="conteneur conteneur--etroit">
+        <div class="encadre apparition" data-anim="zoom">
+          <h3>Quand l'émotionnel se ressent dans le corps</h3>
+          <p>Les blessures émotionnelles se retrouvent souvent dans le corps, sous forme de
+             tensions ou de douleurs. Grâce à mon intervention énergétique et aux techniques
+             qui me sont propres, issues de mes initiations personnelles, j'accompagne le
+             soulagement des douleurs, quelle que soit leur nature, avec des résultats souvent
+             rapides. Le travail énergétique continue ensuite d'agir plusieurs jours après le soin.</p>
+        </div>
+
+        <p class="citation apparition">Que ce soit sur le court, le moyen ou le long terme, mon accompagnement vous donne
+           des clés pour mieux avancer et retrouver une paix intérieure.</p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. POURQUOI « HOLISTIQUE » ?  (bandeau photo avec effet parallaxe)
+         ========================================================= -->
+    <section class="bandeau" id="holistique">
+      <div class="bandeau__fond parallaxe" style="background-image:url('images/holistique.jpg')"></div>
+      <div class="conteneur conteneur--etroit">
+        <div class="verre apparition" data-anim="zoom">
+          <h2>Pourquoi «&nbsp;holistique&nbsp;»&nbsp;?</h2>
+          <p>Parce que c'est un soin global. Il ne s'adresse pas seulement à l'énergie du corps&nbsp;:
+             il fait aussi appel à votre équipe invisible, qui transmet parfois des messages
+             et aide à libérer des blocages émotionnels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. MES SOINS
+         ✏️ TARIFS : modifier la durée et le prix dans chaque carte.
+         Pour ajouter un soin, copier un bloc <article> entier.
+         ========================================================= -->
+    <section class="section section--soins" id="soins">
+      <div class="conteneur">
+        <h2 class="apparition">Mes soins</h2>
+
+        <div class="cartes">
+          <!-- SOIN 1 -->
+          <article class="carte apparition" data-anim="haut">
+            <div class="carte__image"><img src="images/soin-energetique.jpg" alt="Séance de soin énergétique : mains posées sur le front d'une personne allongée" loading="lazy"></div>
+            <div class="carte__corps">
+              <svg class="carte__icone" aria-hidden="true"><use href="#yinyang"/></svg>
+              <h3>Soin énergétique</h3>
+              <p class="carte__infos">
+                <span class="carte__duree">environ 1&nbsp;h</span>
+                <span class="carte__prix">50&nbsp;€</span>
+              </p>
+              <p>Une séance globale d'harmonisation de l'énergie. Chaque soin est comme une œuvre
+                 d'art&nbsp;: il est unique, car pendant la séance je peux recevoir une gestuelle ou une
+                 vision en accord avec chaque personne.</p>
+            </div>
+          </article>
+
+          <!-- SOIN 2 -->
+          <article class="carte apparition" data-anim="haut" style="--delai:.2s">
+            <div class="carte__image"><img src="images/massage.jpg" alt="Massage énergétique du visage à la lueur d'une bougie" loading="lazy"></div>
+            <div class="carte__corps">
+              <svg class="carte__icone" aria-hidden="true"><use href="#yinyang"/></svg>
+              <h3>Massage énergétique</h3>
+              <p class="carte__infos">
+                <span class="carte__duree">environ 1&nbsp;h</span>
+                <span class="carte__prix">65&nbsp;€</span>
+              </p>
+              <p>Massage aux huiles essentielles de lavande, de CBD et de camphre, associé
+                 au travail énergétique.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="avertissement apparition">Les soins énergétiques ne remplacent en aucun cas un avis,
+           un diagnostic ou un traitement médical.</p>
+      </div>
+    </section>
+
+    <!-- Bandeau lavande avec la phrase d'accroche -->
+    <div class="bandeau bandeau--fin" aria-hidden="true">
+      <div class="bandeau__fond parallaxe" style="background-image:url('images/lavande.jpg')"></div>
+      <p class="bandeau__phrase apparition" data-anim="zoom">Un soin pour le corps,<br>un soin pour l'âme</p>
+    </div>
+
+    <!-- =========================================================
+         6. RENDEZ-VOUS & CONTACT
+         ✏️ Compléter l'email, l'adresse et les réseaux sociaux.
+         ========================================================= -->
+    <section class="section section--contact" id="contact">
+      <div class="conteneur">
+        <h2 class="apparition">Rendez-vous &amp; contact</h2>
+
+        <div class="contact">
+          <div class="contact__infos apparition" data-anim="gauche">
+            <p>La prise de rendez-vous se fait par téléphone&nbsp;:</p>
+            <a href="tel:+33774632371" class="bouton bouton--large bouton--brillant bouton--pulse">📞 07 74 63 23 71</a>
+
+            <ul class="contact__liste">
+              <!-- ✏️ EMAIL : remplacer les deux occurrences de [à compléter] -->
+              <li><strong>Email&nbsp;:</strong> <a href="mailto:[à compléter]" class="a-completer">[à compléter]</a></li>
+              <!-- ✏️ ADRESSE -->
+              <li><strong>Cabinet&nbsp;:</strong> <span class="a-completer">[à compléter]</span>, 40100 Dax</li>
+              <!-- ✏️ RÉSEAUX SOCIAUX : mettre l'adresse de la page à la place de "#",
+                   ou supprimer la ligne si le réseau n'existe pas -->
+              <li><strong>Suivez-moi&nbsp;:</strong>
+                <a href="#" class="a-completer">Facebook</a> ·
+                <a href="#" class="a-completer">Instagram</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- ✏️ CARTE GOOGLE MAPS : remplacer "Dax,France" dans le lien
+               par l'adresse complète du cabinet (espaces → +),
+               ex : q=12+rue+des+Fleurs,+40100+Dax -->
+          <div class="contact__carte apparition" data-anim="droite">
+            <iframe
+              src="https://www.google.com/maps?q=Dax,France&output=embed"
+              title="Carte : emplacement du cabinet à Dax"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       7. PIED DE PAGE
+       ========================================================= -->
+  <footer class="pied">
+    <svg class="pied__symbole" aria-hidden="true"><use href="#yinyang"/></svg>
+    <p class="pied__nom">Les Mains Magiques Dax</p>
+    <p>Thérapie énergétique holistique · Dax (Landes) · <a href="tel:+33774632371">07 74 63 23 71</a></p>
+    <p class="pied__avertissement">Les soins énergétiques ne remplacent en aucun cas un avis,
+       un diagnostic ou un traitement médical.</p>
+    <p class="pied__liens">
+      <a href="mentions-legales.html">Mentions légales</a> · © <span id="annee">2026</span> Les Mains Magiques Dax
+    </p>
+  </footer>
+
+  <!-- Bouton "retour en haut" -->
+  <a href="#accueil" class="haut" id="haut" aria-label="Revenir en haut de la page">↑</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

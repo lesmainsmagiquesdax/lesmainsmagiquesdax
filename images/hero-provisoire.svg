@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- IMAGE PROVISOIRE : sera remplacée automatiquement dès qu'un fichier
+       images/hero.jpg sera ajouté au dossier. -->
+  <defs>
+    <linearGradient id="fond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9cdf0"/>
+      <stop offset="0.6" stop-color="#efe9f8"/>
+      <stop offset="1" stop-color="#fbf8f1"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dore">
+      <stop offset="0" stop-color="#f3e3b8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#e6d3a3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#fond)"/>
+  <circle cx="800" cy="420" r="420" fill="url(#halo)"/>
+  <circle cx="300" cy="260" r="160" fill="url(#dore)"/>
+  <circle cx="1300" cy="300" r="190" fill="url(#halo)"/>
+  <circle cx="1180" cy="720" r="140" fill="url(#dore)"/>
+  <circle cx="420" cy="760" r="200" fill="url(#halo)"/>
+  <g fill="#fff">
+    <circle cx="220" cy="140" r="3"/><circle cx="520" cy="90" r="2"/>
+    <circle cx="1100" cy="130" r="3"/><circle cx="1420" cy="520" r="2.5"/>
+    <circle cx="160" cy="560" r="2"/><circle cx="960" cy="860" r="2.5"/>
+    <circle cx="680" cy="180" r="2"/><circle cx="1350" cy="860" r="3"/>
+  </g>
+</svg>

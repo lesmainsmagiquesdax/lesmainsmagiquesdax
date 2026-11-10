@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130">
+  <!-- Logo Les Mains Magiques Dax : main ouverte, fleur de lotus, spirale -->
+  <g fill="none" stroke="#6b5a9e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="#c9a45c" d="M60 40 a2 2 0 0 1 4 0 a4 4 0 0 1 -8 0 a6 6 0 0 1 12 0 a8 8 0 0 1 -16 0 a10 10 0 0 1 20 0"/>
+    <g transform="translate(0 4)" fill="#efe9f8">
+      <path d="M58 100 C44 102 32 98 26 90 C38 88 50 92 58 100Z"/>
+      <path d="M58 100 C72 102 84 98 90 90 C78 88 66 92 58 100Z"/>
+      <path d="M58 100 C46 98 38 88 38 78 C48 80 56 88 58 100Z"/>
+      <path d="M58 100 C70 98 78 88 78 78 C68 80 60 88 58 100Z"/>
+      <path d="M58 100 C50 90 52 78 58 70 C64 78 66 90 58 100Z"/>
+    </g>
+    <path d="M10 120 C36 128 80 126 102 106 C108 100 110 93 104 92 C99 91 94 98 86 102 C66 110 42 108 30 100 C26 92 20 86 15 90 C11 93 14 100 18 104 L10 107"/>
+    <path d="M100 101 C92 107 84 110 74 112"/>
+    <path d="M95 109 C88 114 80 117 70 118"/>
+  </g>
+</svg>

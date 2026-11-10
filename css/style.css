@@ -1,0 +1,680 @@
+/* =============================================================
+   LES MAINS MAGIQUES DAX — Feuille de style
+   Pensée "mobile d'abord" : les styles de base sont pour téléphone,
+   les écrans plus larges sont gérés dans les @media plus bas.
+   ============================================================= */
+
+/* ---------- 1. COULEURS & RÉGLAGES GÉNÉRAUX ----------
+   ✏️ Pour changer une couleur sur tout le site, modifier ici. */
+:root {
+  --lavande:        #9b87c9;  /* couleur principale */
+  --lavande-fonce:  #6b5a9e;  /* titres, boutons */
+  --lavande-pale:   #efe9f8;  /* fonds de sections */
+  --creme:          #fbf8f1;  /* fond général */
+  --or:             #c9a45c;  /* touches dorées */
+  --or-clair:       #e6d3a3;
+  --texte:          #3f3a4f;
+  --texte-doux:     #6a6478;
+
+  --police-titre: "Cormorant Garamond", Georgia, serif;
+  --police-texte: "Nunito Sans", "Segoe UI", Arial, sans-serif;
+
+  --rayon: 18px;
+  --ombre: 0 10px 30px rgba(107, 90, 158, 0.12);
+  --hauteur-entete: 64px;
+  --douceur: cubic-bezier(.22, .61, .36, 1); /* courbe des animations */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--hauteur-entete); }
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  color: var(--lavande-fonce);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+h2 { font-size: clamp(2rem, 6vw, 2.8rem); text-align: center; }
+/* Trait doré sous les titres (il s'allonge quand le titre apparaît) */
+h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  margin: 0.5em auto 0;
+  background: linear-gradient(90deg, transparent, var(--or), transparent);
+  transition: width 1.4s var(--douceur) .4s;
+}
+.js h2.apparition:not(.visible)::after { width: 0; }
+h3 { font-size: 1.6rem; }
+p { margin: 0 0 1.1em; }
+a { color: var(--lavande-fonce); }
+img { max-width: 100%; display: block; }
+figure { margin: 0; }
+
+.conteneur { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; position: relative; }
+.conteneur--etroit { max-width: 720px; }
+
+/* Repère visuel des infos à compléter (à retirer une fois rempli) */
+.a-completer { background: #fff3c4; border-radius: 4px; padding: 0 4px; }
+
+/* ---------- 2. BOUTONS ---------- */
+.bouton {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 0.85em 1.6em;
+  border-radius: 999px;
+  background: var(--lavande-fonce);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--or);
+  box-shadow: 0 6px 18px rgba(107, 90, 158, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.bouton:hover, .bouton:focus-visible {
+  background: var(--lavande);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(201, 164, 92, 0.45);
+}
+.bouton--petit { padding: 0.45em 1.2em; font-size: 0.95rem; box-shadow: none; }
+.bouton--large { font-size: 1.25rem; padding: 0.9em 2em; }
+
+/* Reflet doré qui traverse le bouton toutes les quelques secondes */
+.bouton--brillant::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: -60%;
+  width: 40%;
+  background: linear-gradient(105deg, transparent, rgba(255, 240, 200, 0.6), transparent);
+  transform: skewX(-20deg);
+  animation: reflet 4.5s ease-in-out infinite 3s;
+}
+@keyframes reflet { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+
+/* Onde lumineuse autour du bouton d'appel */
+.bouton--pulse { overflow: visible; }
+.bouton--pulse::before {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  border: 2px solid var(--or);
+  animation: onde 2.6s ease-out infinite;
+}
+@keyframes onde { from { transform: scale(1); opacity: .8; } to { transform: scale(1.25, 1.6); opacity: 0; } }
+
+/* ---------- 3. LOGO (SVG) ---------- */
+.logo path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.logo__lotus path { fill: rgba(155, 135, 201, 0.15); }
+.logo__spirale path { stroke: var(--or); }
+
+/* La spirale tourne très lentement sur elle-même */
+.logo__spirale {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rotation 40s linear infinite;
+}
+@keyframes rotation { to { transform: rotate(360deg); } }
+
+.logo--petit { width: 38px; height: 42px; color: var(--lavande-fonce); }
+.logo--grand { width: 140px; height: 152px; color: var(--lavande-fonce); position: relative; }
+
+/* Le grand logo se dessine trait par trait à l'ouverture de la page */
+.logo--trace path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: tracer 2.2s var(--douceur) forwards;
+}
+.logo--trace .logo__main path    { animation-delay: .2s; }
+.logo--trace .logo__lotus path   { animation-delay: .6s; fill-opacity: 0; animation-name: tracer, remplir; animation-duration: 2.2s, 1.2s; animation-delay: .6s, 2s; }
+.logo--trace .logo__spirale path { animation-delay: 1.1s; }
+@keyframes tracer  { to { stroke-dashoffset: 0; } }
+@keyframes remplir { to { fill-opacity: 1; } }
+
+/* Halo lumineux qui "respire" derrière le logo */
+.logo-aura { position: relative; display: inline-block; margin-bottom: 4px; }
+.logo-aura::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, .95) 0%, rgba(230, 211, 163, .45) 35%, transparent 68%);
+  animation: respirer 6s ease-in-out infinite;
+}
+@keyframes respirer { 0%, 100% { transform: scale(.9); opacity: .75; } 50% { transform: scale(1.08); opacity: 1; } }
+
+/* ---------- 4. EN-TÊTE & MENU ---------- */
+.progression {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--lavande), var(--or), var(--or-clair));
+  transform-origin: left;
+  transform: scaleX(var(--avancement, 0));
+}
+
+.entete {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--hauteur-entete);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform .5s var(--douceur);
+}
+.entete.defile {
+  background: rgba(251, 248, 241, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 16px rgba(107, 90, 158, 0.1);
+}
+.entete__marque {
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none;
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--lavande-fonce);
+}
+
+/* Bouton "burger" (mobile) */
+.menu-bouton {
+  width: 44px; height: 44px;
+  background: none; border: 0; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  padding: 10px;
+}
+.menu-bouton span {
+  display: block; height: 2px; background: var(--lavande-fonce); border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.menu-bouton[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-bouton[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-bouton[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  top: var(--hauteur-entete); left: 0; right: 0;
+  background: var(--creme);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 16px 0 24px;
+  box-shadow: 0 12px 24px rgba(107, 90, 158, 0.12);
+  transform: translateY(-120%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.45s var(--douceur), opacity 0.45s ease, visibility 0.45s;
+}
+.menu.ouvert { transform: none; opacity: 1; visibility: visible; }
+.menu a:not(.bouton) {
+  position: relative;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: var(--texte);
+  font-size: 1.1rem;
+}
+/* Soulignement doré qui se déploie au survol */
+.menu a:not(.bouton)::after {
+  content: "";
+  position: absolute; left: 16px; right: 16px; bottom: 6px;
+  height: 1px;
+  background: var(--or);
+  transform: scaleX(0);
+  transition: transform .35s var(--douceur);
+}
+.menu a:not(.bouton):hover::after,
+.menu a.actif::after { transform: scaleX(1); }
+.menu a:not(.bouton):hover, .menu a.actif { color: var(--lavande-fonce); }
+.menu .bouton { margin-top: 8px; }
+
+/* ---------- 5. ACCUEIL ---------- */
+.accueil {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--hauteur-entete) + 24px) 20px 72px;
+  overflow: hidden;
+}
+/* Le fond dépasse vers le haut pour l'effet de parallaxe */
+.accueil__fond { position: absolute; inset: -40% 0 0 0; z-index: -3; will-change: transform; }
+.accueil__image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 60% 30%;
+  animation: zoom-lent 24s ease-in-out infinite alternate; /* léger zoom continu */
+}
+@keyframes zoom-lent { from { transform: scale(1.15); } to { transform: scale(1); } }
+
+/* Voile lumineux pour garder le texte lisible */
+.accueil__voile {
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(251, 248, 241, 0.88) 0%, rgba(251, 248, 241, 0.62) 50%, rgba(239, 233, 248, 0.45) 100%),
+    linear-gradient(180deg, rgba(239, 233, 248, .3), rgba(155, 135, 201, .25));
+}
+.particules { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; }
+
+.accueil__contenu { max-width: 760px; }
+
+.accueil__titre { font-size: clamp(2.4rem, 9vw, 4.4rem); margin-bottom: 0.15em; }
+/* Les mots du titre apparaissent un par un, en sortant d'un flou */
+.mot {
+  display: inline-block;
+  animation: mot-apparait 1.2s var(--douceur) both;
+  animation-delay: calc(.8s + var(--i) * .15s);
+}
+.mot--or {
+  font-style: italic;
+  padding: 0 .12em 0 .02em;   /* évite que la fin de l'italique soit coupée */
+  background: linear-gradient(100deg, var(--or) 20%, #f3e3b8 40%, var(--or) 60%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: mot-apparait 1.2s var(--douceur) both, scintille 5s linear infinite 3s;
+  animation-delay: calc(.8s + var(--i) * .15s), 3s;
+}
+@keyframes mot-apparait {
+  from { opacity: 0; transform: translateY(20px); filter: blur(10px); letter-spacing: .15em; }
+  to   { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes scintille { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+
+/* Éléments de l'accueil qui entrent les uns après les autres */
+.entree { animation: entree 1s var(--douceur) both; animation-delay: var(--d, 0s); }
+@keyframes entree { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+.accueil__sous-titre {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+}
+.accueil__accroche {
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  color: var(--texte);
+  margin-bottom: 1em;
+}
+
+.points-forts { list-style: none; padding: 0; margin: 0 0 2em; display: grid; gap: 10px; }
+.points-forts li {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  padding: 10px 16px;
+  font-size: 0.98rem;
+  transition: transform .4s var(--douceur), box-shadow .4s ease;
+}
+.points-forts li:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(201, 164, 92, .25); }
+.points-forts li::before { content: "✦ "; color: var(--or); }
+.compteur { font-weight: 600; color: var(--lavande-fonce); }
+
+/* Petite souris "faire défiler" en bas de l'accueil */
+.defiler {
+  position: absolute; bottom: 20px; left: 50%;
+  width: 26px; height: 42px;
+  margin-left: -13px;
+  border: 2px solid var(--lavande-fonce);
+  border-radius: 14px;
+  opacity: .7;
+  animation: entree 1s both 2.8s;
+}
+.defiler span {
+  position: absolute; top: 7px; left: 50%;
+  width: 4px; height: 8px; margin-left: -2px;
+  border-radius: 2px;
+  background: var(--or);
+  animation: molette 2s ease-in-out infinite;
+}
+@keyframes molette { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
+
+/* ---------- 6. SECTIONS ---------- */
+.section { padding: 72px 0; position: relative; overflow: hidden; }
+.section p { text-align: justify; hyphens: auto; }
+
+/* Mise en page image + texte */
+.duo { display: grid; gap: 36px; align-items: center; }
+.duo__texte h2 { text-align: center; }
+.duo__image {
+  position: relative;
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(107, 90, 158, .22);
+  max-width: 460px;
+  margin: 0 auto;
+}
+.duo__image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 1.4s var(--douceur);
+}
+.duo__image:hover img { transform: scale(1.06); }
+/* Fin liseré doré à l'intérieur de l'image */
+.duo__image::after {
+  content: "";
+  position: absolute; inset: 12px;
+  border: 1px solid rgba(230, 211, 163, .7);
+  border-radius: calc(var(--rayon) - 6px);
+  pointer-events: none;
+}
+.duo__image--arche, .duo__image--arche::after { border-radius: 240px 240px var(--rayon) var(--rayon); }
+
+/* Section "Un soin de l'âme" mise en avant */
+.section--avant {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(201, 164, 92, 0.12), transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(155, 135, 201, 0.25), transparent 45%),
+    var(--lavande-pale);
+}
+/* Lueurs flottantes en arrière-plan */
+.lueurs span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: .55;
+  animation: flotter 18s ease-in-out infinite alternate;
+}
+.lueurs span:nth-child(1) { width: 260px; height: 260px; background: #fff; top: 5%; left: -60px; }
+.lueurs span:nth-child(2) { width: 200px; height: 200px; background: var(--or-clair); bottom: 10%; right: -40px; animation-duration: 22s; }
+.lueurs span:nth-child(3) { width: 180px; height: 180px; background: var(--lavande); top: 45%; left: 40%; opacity: .25; animation-duration: 26s; }
+@keyframes flotter {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, -40px) scale(1.2); }
+}
+
+.encadre {
+  position: relative;
+  background: #fff;
+  border-left: 3px solid var(--or);
+  border-radius: var(--rayon);
+  padding: 24px;
+  margin: 3em 0 2em;
+  box-shadow: var(--ombre);
+}
+.citation {
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--lavande-fonce);
+  text-align: center !important;
+}
+
+/* Séparateur yin-yang qui tourne doucement */
+.separateur {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 0 auto; max-width: 400px; padding: 8px 20px;
+  color: var(--or);
+}
+.separateur::before, .separateur::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or-clair));
+}
+.separateur::after { background: linear-gradient(90deg, var(--or-clair), transparent); }
+.separateur svg { width: 32px; height: 32px; animation: rotation 14s linear infinite; }
+
+/* ---------- 7. BANDEAUX PHOTO (effet parallaxe) ---------- */
+.bandeau {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 0;
+  isolation: isolate;
+}
+.bandeau__fond {
+  position: absolute;
+  inset: -25% 0;            /* plus grand que le bandeau pour pouvoir glisser */
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.bandeau::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(107, 90, 158, .25), rgba(63, 58, 79, .35));
+}
+/* Carte "verre dépoli" par-dessus la photo */
+.verre {
+  background: rgba(251, 248, 241, .78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: var(--rayon);
+  padding: 36px 24px;
+  box-shadow: 0 20px 50px rgba(63, 58, 79, .25);
+}
+.verre p { text-align: center; margin-bottom: 0; }
+
+.bandeau--fin {
+  min-height: clamp(280px, 46vh, 460px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 20px;
+}
+.bandeau__phrase {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  line-height: 1.15;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 2px 30px rgba(63, 58, 79, .6);
+}
+
+/* ---------- 8. CARTES DES SOINS ---------- */
+.cartes { display: grid; gap: 28px; margin-top: 16px; perspective: 1000px; }
+.carte {
+  position: relative;
+  background: #fff;
+  border-radius: var(--rayon);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+  text-align: center;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .5s var(--douceur), box-shadow .5s ease;
+}
+.carte:hover { box-shadow: 0 24px 50px rgba(107, 90, 158, .25); }
+/* Reflet lumineux qui suit la souris (position donnée par le JavaScript) */
+.carte::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(255, 245, 220, .45), transparent 45%);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.carte:hover::after { opacity: 1; }
+.carte__image { overflow: hidden; aspect-ratio: 16 / 10; position: relative; }
+.carte__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--douceur); }
+.carte:hover .carte__image img { transform: scale(1.08); }
+.carte__corps { padding: 8px 24px 28px; position: relative; }
+.carte p { text-align: left; }
+.carte__icone {
+  width: 48px; height: 48px;
+  color: var(--lavande);
+  margin-top: -32px;              /* chevauche la photo */
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 4px 14px rgba(107, 90, 158, .2);
+  transition: transform 1.2s var(--douceur), color .4s ease;
+}
+.carte:hover .carte__icone { transform: rotate(360deg); color: var(--or); }
+.carte__infos { display: flex; justify-content: center; align-items: baseline; gap: 16px; text-align: center !important; }
+.carte__duree { color: var(--texte-doux); }
+.carte__prix { font-family: var(--police-titre); font-size: 2rem; font-weight: 600; color: var(--or); }
+
+.avertissement {
+  margin-top: 32px;
+  text-align: center !important;
+  font-size: 0.9rem;
+  color: var(--texte-doux);
+  font-style: italic;
+}
+
+/* ---------- 9. CONTACT ---------- */
+.section--contact { background: var(--lavande-pale); }
+.contact { display: grid; gap: 32px; }
+.contact__infos { text-align: center; }
+.contact__infos p { text-align: center; }
+.contact__liste { list-style: none; padding: 0; margin: 2em 0 0; text-align: left; display: grid; gap: 8px; }
+.contact__carte iframe {
+  width: 100%; height: 300px;
+  border: 0;
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+
+/* ---------- 10. PIED DE PAGE ---------- */
+.pied {
+  background: var(--lavande-fonce);
+  color: #f1ecfa;
+  text-align: center;
+  padding: 48px 20px 32px;
+  font-size: 0.92rem;
+}
+.pied a { color: var(--or-clair); }
+.pied__symbole { width: 36px; height: 36px; color: var(--or-clair); animation: rotation 20s linear infinite; }
+.pied__nom { font-family: var(--police-titre); font-size: 1.6rem; color: #fff; margin: 0.3em 0; }
+.pied__avertissement { font-style: italic; opacity: 0.85; max-width: 560px; margin: 1em auto; }
+.pied__liens { opacity: 0.8; margin-bottom: 0; }
+
+/* Bouton retour en haut */
+.haut {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40;
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--lavande-fonce);
+  color: #fff;
+  border: 1px solid var(--or);
+  text-decoration: none;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 18px rgba(107, 90, 158, .35);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity .4s ease, transform .4s var(--douceur), background .3s;
+}
+.haut.visible { opacity: 1; transform: none; pointer-events: auto; }
+.haut:hover { background: var(--lavande); }
+
+/* Étincelles qui suivent la souris (ordinateur uniquement, créées en JS) */
+.etincelle {
+  position: fixed;
+  z-index: 70;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, #fff 0%, var(--or) 60%, transparent 70%);
+  box-shadow: 0 0 8px var(--or-clair);
+  animation: etincelle .9s ease-out forwards;
+}
+@keyframes etincelle {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to   { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(.2); }
+}
+
+/* ---------- 11. APPARITIONS AU DÉFILEMENT ----------
+   Les éléments ".apparition" apparaissent quand on les fait défiler
+   (classe "visible" ajoutée par le JavaScript).
+   data-anim="gauche" / "droite" / "zoom" change la direction. */
+.js .apparition {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.1s var(--douceur), transform 1.1s var(--douceur), filter 1.1s var(--douceur);
+  transition-delay: var(--delai, 0s);
+}
+.js .apparition[data-anim="gauche"] { transform: translateX(-50px); }
+.js .apparition[data-anim="droite"] { transform: translateX(50px); }
+.js .apparition[data-anim="zoom"]   { transform: scale(.92); filter: blur(6px); }
+.js .apparition.visible { opacity: 1; transform: none; filter: none; }
+/* Après l'apparition, la carte peut s'incliner librement */
+.js .carte.apparition.visible { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+.js .carte.inclinable { transition: transform .5s var(--douceur), box-shadow .5s ease; transition-delay: 0s; }
+
+/* ---------- 12. TABLETTES & ORDINATEURS ---------- */
+@media (min-width: 720px) {
+  .points-forts { grid-template-columns: repeat(3, 1fr); }
+  .points-forts li::before { content: "✦"; display: block; }
+  .cartes { grid-template-columns: repeat(2, 1fr); }
+  .contact { grid-template-columns: 1fr 1.2fr; align-items: center; }
+  .contact__carte iframe { height: 380px; }
+  .section { padding: 96px 0; }
+  .bandeau { padding: 150px 0; }
+  .verre { padding: 48px 56px; }
+}
+
+@media (min-width: 900px) {
+  .duo { grid-template-columns: 1fr 1.2fr; gap: 64px; }
+  .duo--inverse .duo__image { order: 2; }
+  .duo__texte h2 { text-align: left; }
+  .duo__texte h2::after { margin-left: 0; }
+}
+
+@media (min-width: 960px) {
+  .entete { padding: 0 32px; }
+  .menu-bouton { display: none; }
+  .menu {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  .menu a:not(.bouton) { font-size: 1rem; padding: 8px 12px; }
+  .menu a:not(.bouton)::after { left: 12px; right: 12px; bottom: 4px; }
+  .menu .bouton { margin: 0 0 0 8px; }
+  .logo--grand { width: 170px; height: 184px; }
+}
+
+/* ---------- 13. RESPECT DES PRÉFÉRENCES "MOINS D'ANIMATIONS" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .logo--trace path { stroke-dashoffset: 0; }
+  .logo--trace .logo__lotus path { fill-opacity: 1; }
+  .js .apparition { opacity: 1; transform: none; filter: none; }
+  .js h2.apparition:not(.visible)::after { width: 60px; }
+  .particules, .etincelle { display: none; }
+}
+
+/* ---------- 14. PAGE MENTIONS LÉGALES ---------- */
+.page-simple { padding: calc(var(--hauteur-entete) + 48px) 0 72px; }
+.page-simple h2 { text-align: left; font-size: 1.7rem; margin-top: 1.5em; }
+.page-simple h2::after { margin-left: 0; }
