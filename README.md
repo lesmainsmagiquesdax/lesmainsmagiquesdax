@@ -24,7 +24,8 @@ dans les mentions légales).
 | Fichier | Emplacement |
 |---|---|
 | `images/hero.jpg` | Accueil (provisoire — à remplacer par votre photo) |
-| `images/qui-suis-je.jpg` | Section « Qui suis-je » |
+| `images/magnetisme.jpg` | Section « Qui suis-je » (Pexels — les esprits et bougies animés sont ajoutés en CSS) |
+| `images/qui-suis-je.jpg` | Ancienne photo « Qui suis-je », plus utilisée |
 | `images/lotus.jpg` | Section « Un soin de l'âme » |
 | `images/holistique.jpg` | Bandeau « Pourquoi holistique ? » |
 | `images/soin-energetique.jpg` | Carte « Soin énergétique » |
@@ -42,9 +43,7 @@ une fois remplis, retirer `class="a-completer"` pour enlever le surlignage.
 
 À compléter :
 - l'email (deux fois dans le lien `mailto:` de `index.html`)
-- l'adresse du cabinet, ainsi que l'adresse de la carte Google Maps (voir le commentaire au-dessus de l'`<iframe>`)
-- l'adresse dans les « données structurées » en haut de `index.html` (`streetAddress`)
-  — si un tarif change, le modifier aussi dans ces données (`"price"`)
+- si un tarif change, le modifier aussi dans ces données (`"price"`)
   et dans la réponse « Combien coûte une séance ? » de la FAQ (texte visible + données)
 - les liens Facebook / Instagram (ou supprimer la ligne)
 - les mentions légales : nom, statut, SIRET, hébergeur

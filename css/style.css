@@ -96,16 +96,19 @@ figure { margin: 0; }
 .bouton--large { font-size: 1.25rem; padding: 0.9em 2em; }
 
 /* Reflet doré qui traverse le bouton toutes les quelques secondes */
+/* (le reflet glisse à l'intérieur du bouton, sans jamais en sortir) */
 .bouton--brillant::after {
   content: "";
   position: absolute;
-  top: 0; bottom: 0; left: -60%;
-  width: 40%;
-  background: linear-gradient(105deg, transparent, rgba(255, 240, 200, 0.6), transparent);
-  transform: skewX(-20deg);
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 240, 200, 0.6) 50%, transparent 60%) no-repeat;
+  background-size: 250% 100%;
+  background-position: 150% 0;
   animation: reflet 4.5s ease-in-out infinite 3s;
 }
-@keyframes reflet { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+@keyframes reflet { 0%, 70% { background-position: 150% 0; } 100% { background-position: -50% 0; } }
 
 /* Onde lumineuse autour du bouton d'appel */
 .bouton--pulse { overflow: visible; }
@@ -129,13 +132,73 @@ figure { margin: 0; }
 .logo .nervure { fill: none; stroke: #e29bbf; stroke-width: .32; stroke-opacity: .6; stroke-linecap: round; }
 .logo__spirale-halo { opacity: .7; }
 
-/* La spirale tourne très lentement sur elle-même */
+/* La spirale tourne sur elle-même */
 .logo__spirale {
   transform-box: fill-box;
   transform-origin: center;
-  animation: rotation 40s linear infinite;
+  animation: rotation 18s linear infinite;
 }
 @keyframes rotation { to { transform: rotate(360deg); } }
+
+/* ----- Énergie de la spirale (grand logo de l'accueil) ----- */
+/* Tout tourne autour du centre de la spirale */
+.logo__vortex,
+.logo__ondes circle,
+.logo__orbites .orbite { transform-box: view-box; transform-origin: 60.5px 37px; }
+
+/* Tourbillon : 3 bras lumineux qui tournent et dont la lumière coule */
+.logo__vortex { animation: rotation 11s linear infinite; }
+.logo__vortex .bras {
+  stroke-width: .55;
+  opacity: .75;
+  stroke-dasharray: 22 6 10 5 14 8 6 29;
+  animation: couler 5s linear infinite;
+}
+/* Impulsions de lumière qui partent du centre vers l'extérieur */
+.logo__impulsions { fill: none; stroke-linecap: round; }
+.logo__impulsions .impulsion {
+  stroke-width: 1.4;
+  stroke-dasharray: 5 95;
+  animation: couler 2.6s cubic-bezier(.45, 0, .55, 1) infinite;
+  animation-delay: calc(var(--p) * -.87s);
+}
+@keyframes couler { to { stroke-dashoffset: -100; } }
+
+/* Ondes d'énergie qui rayonnent autour de la spirale */
+.logo__ondes circle {
+  stroke-width: .5;
+  opacity: 0;
+  animation: onde-logo 3.6s ease-out infinite;
+  animation-delay: calc(3s + var(--o) * 1.8s);
+}
+@keyframes onde-logo { 0% { transform: scale(.9); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
+
+/* Petites étincelles en orbite */
+.logo__orbites .orbite { animation: rotation var(--d) linear infinite; }
+.logo__orbites .orbite--inverse { animation-direction: reverse; }
+
+/* Énergie qui monte du cœur du lotus vers la spirale */
+.logo__flux circle {
+  opacity: 0;
+  animation: monter-energie 3s ease-in infinite;
+  animation-delay: calc(2.8s + var(--f) * .6s);
+}
+@keyframes monter-energie {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Lueur dorée qui « respire » dans la paume */
+.logo__paume-lueur {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: respirer-paume 4s ease-in-out infinite;
+}
+@keyframes respirer-paume { 0%, 100% { opacity: .5; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.06); } }
+
+/* Le halo de la spirale pulse */
+@keyframes pulsation { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
 
 /* Les petites étoiles dorées scintillent, chacune à son rythme */
 .logo__etoiles path {
@@ -166,6 +229,13 @@ figure { margin: 0; }
   transform-origin: 60px 37px; /* centre de la spirale */
   animation: deployer 1.8s var(--douceur) 1.5s backwards;
 }
+/* Une fois déployé, le halo de la spirale se met à pulser */
+.logo--trace .logo__spirale .logo__spirale-halo {
+  animation: deployer 1.8s var(--douceur) 1.5s backwards, pulsation 2.8s ease-in-out 3.3s infinite;
+}
+/* Les effets d'énergie apparaissent juste après la spirale */
+.logo--trace .logo__energie { animation: apparaitre 1.5s ease 2.4s backwards; }
+.logo--trace .logo__paume-lueur { animation: apparaitre 1.2s ease 1.6s backwards, respirer-paume 4s ease-in-out 2.8s infinite; }
 @keyframes monter     { from { opacity: 0; transform: translateY(8px); } }
 @keyframes apparaitre { from { opacity: 0; } }
 @keyframes eclore     { from { opacity: 0; transform: scale(.25); } }
@@ -410,6 +480,128 @@ figure { margin: 0; }
 }
 .duo__image--arche, .duo__image--arche::after { border-radius: 240px 240px var(--rayon) var(--rayon); }
 
+/* Photo de magnétisme : présences lumineuses (« esprits ») qui s'élèvent
+   et lueurs de bougies qui vacillent, par-dessus la photo */
+.duo__image--esprits img { height: auto; object-position: center 30%; }
+.esprits {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;          /* ajoute de la lumière sans salir la photo */
+}
+/* Les « esprits » : grands voiles de lumière blanc-lavande qui s'élèvent */
+.esprit, .orbe {
+  position: absolute;
+  left: var(--x);
+  opacity: 0;
+  animation: esprit-monte var(--l) ease-in-out infinite;
+  animation-delay: var(--e);
+}
+.esprit {
+  bottom: -200px;
+  width: 90px; height: 200px;
+  margin-left: -45px;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  background: radial-gradient(ellipse at 50% 38%, #fff 0%, rgba(240, 232, 255, .85) 25%, rgba(200, 182, 240, .45) 48%, transparent 70%);
+  filter: blur(4px);
+}
+/* Les orbes : petites boules de lumière dorée qui montent en scintillant */
+.orbe {
+  bottom: -30px;
+  width: var(--s); height: var(--s);
+  margin-left: calc(var(--s) / -2);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #fff4d6 35%, rgba(230, 211, 163, .5) 65%, transparent 75%);
+  box-shadow: 0 0 14px 5px rgba(255, 238, 190, .55);
+}
+@keyframes esprit-monte {
+  0%   { transform: translate(0, 0) scale(.7); opacity: 0; }
+  15%  { opacity: .95; }
+  35%  { opacity: .6; }
+  50%  { transform: translate(28px, -340px) scale(1); opacity: .9; }
+  80%  { opacity: .55; }
+  100% { transform: translate(-18px, -760px) scale(1.15); opacity: 0; }
+}
+
+/* Photo « énergie des mains » : voile mystique sur les bords,
+   puis lumière qui rayonne des deux mains */
+.duo__image--energie img { object-position: center; }
+.ambiance {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 30% 50%, transparent 25%, rgba(70, 50, 110, .35) 70%, rgba(45, 30, 80, .6) 100%);
+}
+.energie-main {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: 170px; height: 170px;
+  margin: -85px 0 0 -85px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 244, 210, 1), rgba(255, 210, 130, .7) 22%, rgba(205, 180, 255, .35) 48%, transparent 70%);
+  animation: rayonner 3s ease-in-out infinite;
+  animation-delay: var(--e, 0s);
+}
+/* Deux ondes d'énergie qui s'échappent de chaque main */
+.energie-main::before,
+.energie-main::after {
+  content: "";
+  position: absolute; inset: 36%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 236, 185, .95);
+  box-shadow: 0 0 14px rgba(255, 220, 150, .9);
+  animation: onde-main 3s ease-out infinite;
+  animation-delay: var(--e, 0s);
+}
+.energie-main::after { animation-delay: calc(var(--e, 0s) - 1.5s); }
+@keyframes rayonner { 0%, 100% { opacity: .75; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes onde-main { 0% { transform: scale(.4); opacity: .95; } 100% { transform: scale(2.6); opacity: 0; } }
+
+/* Bougies au premier plan, un peu floues comme sur une vraie photo :
+   le corps (l'élément), le halo (::before) et la flamme (::after) */
+.bougie {
+  position: absolute;
+  bottom: -6px; left: var(--x);
+  width: 24px; height: var(--h);
+  margin-left: -12px;
+  border-radius: 5px 5px 2px 2px;
+  background: linear-gradient(90deg, #d9c6a6, #fff8ec 45%, #e5d3b4);
+  filter: blur(1.2px);
+}
+.bougie::before {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: calc(100% - 100px);
+  width: 220px; height: 220px;
+  margin-left: -110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 150, 1), rgba(255, 170, 80, .75) 18%, rgba(255, 140, 50, .35) 40%, transparent 66%);
+  animation: vaciller var(--t) ease-in-out infinite alternate;
+}
+.bougie::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 100%;
+  width: 10px; height: 22px;
+  margin: 0 0 2px -5px;
+  border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%;
+  background: radial-gradient(ellipse at 50% 72%, #fff 0%, #ffeeb0 32%, #ffb24a 68%, rgba(255, 140, 40, 0) 100%);
+  transform-origin: 50% 100%;
+  animation: flamme calc(var(--t) / 2) ease-in-out infinite alternate;
+}
+@keyframes vaciller {
+  0%   { opacity: .75; transform: scale(1); }
+  30%  { opacity: .95; transform: scale(1.05); }
+  55%  { opacity: .6;  transform: scale(.96); }
+  80%  { opacity: 1;   transform: scale(1.08); }
+  100% { opacity: .8;  transform: scale(1.01); }
+}
+@keyframes flamme {
+  0%   { transform: scale(1, 1) rotate(-2deg); }
+  40%  { transform: scale(.92, 1.08) rotate(2deg); }
+  70%  { transform: scale(1.05, .94) rotate(-1deg); }
+  100% { transform: scale(.96, 1.04) rotate(1.5deg); }
+}
+
 /* Section "Un soin de l'âme" mise en avant */
 .section--avant {
   background:
@@ -450,6 +642,33 @@ figure { margin: 0; }
   color: var(--lavande-fonce);
   text-align: center !important;
 }
+
+/* Phrase « Le chemin vers soi-même… » entre deux sections */
+.phrase-voyage {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 56px 20px;
+  text-align: center;
+}
+.phrase-voyage__symbole {
+  display: block;
+  width: 34px; height: 34px;
+  margin: 0 auto 16px;
+  color: var(--or);
+  animation: rotation 14s linear infinite;
+}
+.phrase-voyage p {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  line-height: 1.35;
+  color: var(--lavande-fonce);
+}
+.phrase-voyage span { color: #9c7631; } /* doré foncé, lisible sur le fond crème */
+
+/* Section « Découvrir votre propre énergie » */
+.section--energie { background: linear-gradient(180deg, var(--creme), var(--lavande-pale)); }
 
 /* Séparateur yin-yang qui tourne doucement */
 .separateur {
@@ -495,6 +714,7 @@ figure { margin: 0; }
   box-shadow: 0 20px 50px rgba(63, 58, 79, .25);
 }
 .verre p { text-align: center; margin-bottom: 0; }
+.verre p + p { margin-top: 1em; }
 
 .bandeau--fin {
   min-height: clamp(280px, 46vh, 460px);
@@ -606,7 +826,57 @@ figure { margin: 0; }
 .contact { display: grid; gap: 32px; }
 .contact__infos { text-align: center; }
 .contact__infos p { text-align: center; }
-.contact__liste { list-style: none; padding: 0; margin: 2em 0 0; text-align: left; display: grid; gap: 8px; }
+/* Adresse et email : grandes cartes bien lisibles */
+.coordonnees { display: grid; gap: 14px; margin-top: 2em; text-align: left; }
+.coordonnees__ligne {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  padding: 16px 20px;
+  box-shadow: var(--ombre);
+}
+.coordonnees__icone {
+  flex: none;
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--lavande-pale);
+  font-size: 1.4rem;
+}
+.contact__infos .coordonnees__titre {
+  margin: 0;
+  text-align: left;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texte-doux);
+}
+.coordonnees__valeur {
+  display: block;
+  font-style: normal;           /* <address> est en italique par défaut */
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--texte);
+}
+.coordonnees__mail {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: clamp(.95rem, 3.8vw, 1.1rem);
+  color: var(--lavande-fonce);
+}
+/* Numéro de téléphone mis en valeur dans un texte */
+.lien-tel {
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-variant-numeric: lining-nums; /* chiffres bien alignés, plus lisibles */
+  text-decoration: none;
+}
+.contact__reseaux { margin-top: 1.4em; }
 .contact__carte iframe {
   width: 100%; height: 300px;
   border: 0;
