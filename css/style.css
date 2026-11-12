@@ -680,31 +680,58 @@ figure { margin: 0; }
   text-align: center;
 }
 /* Image animée : main ouverte et spirale d'énergie (au-dessus de la phrase) */
+/* La photo vient du visuel Facebook ; les effets sont dessinés par-dessus */
 .main-energie {
-  display: block;
-  width: min(440px, 100%);
-  height: auto;
+  position: relative;
+  width: min(620px, 100%);
   margin: 0 auto 26px;
   border-radius: 22px;
+  overflow: hidden;
   box-shadow: 0 22px 55px rgba(45, 30, 80, .35);
+  isolation: isolate;
 }
-.main-energie .me-spirale,
+.main-energie img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: respirer-image 9s ease-in-out infinite;   /* très léger mouvement de respiration */
+}
+@keyframes respirer-image { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+.main-energie__effets {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  mix-blend-mode: screen;          /* les effets ajoutent de la lumière à la photo */
+  pointer-events: none;
+}
+/* Version de l'accueil : plus large que haute, bords fondus dans le fond clair */
+.main-energie--accueil {
+  width: min(480px, 90vw);
+  aspect-ratio: 2 / 1;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
+}
+.main-energie--accueil img { height: 100%; object-fit: cover; }
 .main-energie .me-bras-groupe,
 .main-energie .me-onde,
-.main-energie .me-orbite { transform-box: view-box; transform-origin: 62px 50px; }
-.me-spirale { animation: rotation 9s linear infinite; }             /* la spirale tourne */
-.me-bras-groupe { animation: rotation 6s linear infinite reverse; }  /* les tourbillons violets, en sens inverse */
-.me-bras { stroke-width: .7; opacity: .8; stroke-dasharray: 18 6 9 5 12 8 6 36; animation: couler 4s linear infinite; }
-.me-impulsion { stroke-width: 2.4; stroke-dasharray: 6 94; animation: couler 2.2s ease-in-out infinite; animation-delay: calc(var(--p) * -.73s); }
-.me-onde { opacity: 0; animation: onde-logo 3.2s ease-out infinite; animation-delay: calc(var(--o) * 1.6s); }
+.main-energie .me-orbite { transform-box: view-box; transform-origin: 500px 150px; } /* centre de la spirale */
+.me-bras-groupe { animation: rotation 14s linear infinite; }          /* les tourbillons tournent avec la spirale */
+.me-bras { stroke-width: 2.4; opacity: .55; stroke-dasharray: 18 6 9 5 12 8 6 36; animation: couler 5s linear infinite; }
+.me-impulsion { stroke-width: 7; stroke-dasharray: 5 95; animation: couler 2.6s ease-in-out infinite; animation-delay: calc(var(--p) * -.87s); }
+.me-onde { opacity: 0; animation: onde-logo 3.6s ease-out infinite; animation-delay: calc(var(--o) * 1.8s); }
 .me-orbite { animation: rotation var(--d) linear infinite; }
 .me-orbite--inverse { animation-direction: reverse; }
-.me-flux circle { opacity: 0; animation: monter-energie 2.6s ease-in infinite; animation-delay: calc(var(--f) * .5s); }
-.me-halo { animation: pulsation 3s ease-in-out infinite; }
+.me-flux circle { opacity: 0; animation: monter-energie-photo 2.8s ease-in infinite; animation-delay: calc(var(--f) * .55s); }
+@keyframes monter-energie-photo {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-85px); }
+}
+.me-halo { animation: pulsation 3.2s ease-in-out infinite; }
 .me-paume { transform-box: fill-box; transform-origin: center; animation: respirer-paume 3.5s ease-in-out infinite; }
 .me-etoile { transform-box: fill-box; transform-origin: center; animation: scintiller 3.2s ease-in-out infinite; animation-delay: var(--d); }
-.me-main { animation: flotter-main 6s ease-in-out infinite; }
-@keyframes flotter-main { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
 
 .phrase-voyage__symbole {
   display: block;
