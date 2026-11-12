@@ -781,6 +781,67 @@ figure { margin: 0; }
 }
 .phrase-voyage span { color: #9c7631; } /* doré foncé, lisible sur le fond crème */
 
+/* ---------- Rubrique « Le soin à distance » ---------- */
+.section--distance {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(155, 135, 201, .18), transparent 45%),
+    var(--creme);
+}
+.section .distance__infos {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px;
+  text-align: left;
+}
+.distance__mode {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--lavande-pale);
+  border: 1px solid var(--or-clair);
+  color: var(--lavande-fonce);
+  font-weight: 600;
+  font-size: .95rem;
+}
+@media (max-width: 899px) { .section .distance__infos { justify-content: center; } }
+.section .lien-distance { margin: 18px auto 0; text-align: center; font-size: 1rem; }
+.lien-distance a { font-weight: 600; }
+
+/* Illustration du moine (dessin animé en SVG) */
+.duo__image--moine { width: 100%; }
+.duo__image--moine svg { display: block; width: 100%; height: auto; }
+.moine .mo-etoile { transform-box: fill-box; transform-origin: center; animation: scintiller 3.4s ease-in-out infinite; animation-delay: var(--d); }
+.moine .mo-flamme { transform-box: fill-box; transform-origin: 50% 100%; animation: flamme calc(var(--t) / 2) ease-in-out infinite alternate; }
+.moine .mo-halo { transform-box: fill-box; transform-origin: center; animation: vaciller var(--t) ease-in-out infinite alternate; }
+.moine .mo-aura { transform-box: fill-box; transform-origin: center; animation: respirer-paume 5s ease-in-out infinite; }
+.moine .mo-sol, .moine .mo-lumiere { animation: pulsation 4s ease-in-out infinite; }
+.moine .mo-lune { animation: pulsation 6s ease-in-out infinite; }
+/* Esprits qui flottent autour du moine */
+.moine .mo-esprit {
+  opacity: .6;
+  animation: esprit-flotte var(--t) ease-in-out infinite alternate;
+  animation-delay: var(--e);
+}
+@keyframes esprit-flotte {
+  0%   { transform: translate(0, 0) scale(1); opacity: .45; }
+  50%  { opacity: .9; }
+  100% { transform: translate(7px, -16px) scale(1.06); opacity: .6; }
+}
+/* Le cœur lumineux sur le front bat doucement */
+.moine .mo-coeur { transform-box: fill-box; transform-origin: center; animation: battement 2.4s ease-in-out infinite; }
+@keyframes battement { 0%, 100% { transform: scale(1); opacity: .85; } 15% { transform: scale(1.18); opacity: 1; } 30% { transform: scale(1); } 45% { transform: scale(1.12); opacity: 1; } }
+/* Spirale d'énergie qui sort de la tête */
+.moine .mo-spirale { transform-box: view-box; transform-origin: 200px 96px; animation: rotation 10s linear infinite; }
+.moine .mo-impulsion { stroke-dasharray: 6 94; animation: couler 2.6s ease-in-out infinite; }
+.moine .mo-rayon { animation: pulsation 2.8s ease-in-out infinite; }
+.moine .mo-flux circle, .moine .mo-flux-tete circle {
+  opacity: 0;
+  animation: monter-moine 2.8s ease-in infinite;
+  animation-delay: calc(var(--f) * .6s);
+}
+@keyframes monter-moine {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-34px); }
+}
+
 /* Section « Découvrir votre propre énergie » */
 .section--energie { background: linear-gradient(180deg, var(--creme), var(--lavande-pale)); }
 
