@@ -388,7 +388,19 @@
         <div class="cartes">
           <!-- SOIN 1 -->
           <article class="carte apparition" data-anim="haut">
-            <div class="carte__image"><img src="images/soin-energetique.jpg" alt="Soin énergétique : les mains d'un magnétiseur posées sur une personne allongée" loading="lazy"></div>
+            <div class="carte__image"><img src="images/soin-energetique.jpg" alt="Soin énergétique : les mains d'un magnétiseur posées sur une personne allongée" loading="lazy">
+              <!-- Énergie animée dans les mains (--x / --y = position de la main sur la photo) -->
+              <div class="carte__energie" aria-hidden="true">
+                <span class="energie-main energie-main--carte" style="--x:40%;--y:58%"></span>
+                <span class="energie-main energie-main--carte" style="--x:76%;--y:73%;--e:-1.5s"></span>
+                <span class="etincelle-main" style="--x:38%;--y:60%;--e:0s;--dx:-12px"></span>
+                <span class="etincelle-main" style="--x:44%;--y:62%;--e:-.8s;--dx:10px"></span>
+                <span class="etincelle-main" style="--x:41%;--y:55%;--e:-1.6s;--dx:4px"></span>
+                <span class="etincelle-main" style="--x:74%;--y:75%;--e:-.4s;--dx:-8px"></span>
+                <span class="etincelle-main" style="--x:79%;--y:71%;--e:-1.2s;--dx:12px"></span>
+                <span class="etincelle-main" style="--x:76%;--y:78%;--e:-2s;--dx:2px"></span>
+              </div>
+            </div>
             <div class="carte__corps">
               <svg class="carte__icone" aria-hidden="true"><use href="#yinyang"/></svg>
               <h3>Soin énergétique</h3>
@@ -404,7 +416,19 @@
 
           <!-- SOIN 2 -->
           <article class="carte apparition" data-anim="haut" style="--delai:.2s">
-            <div class="carte__image"><img src="images/massage.jpg" alt="Massage énergétique : les mains d'un praticien massant en douceur une personne allongée" loading="lazy"></div>
+            <div class="carte__image"><img src="images/massage.jpg" alt="Massage énergétique : les mains d'un praticien massant un dos nu, une serviette sur le bas du corps" loading="lazy">
+              <!-- Énergie animée dans les mains (--x / --y = position de la main sur la photo) -->
+              <div class="carte__energie" aria-hidden="true">
+                <span class="energie-main energie-main--carte" style="--x:68%;--y:29%"></span>
+                <span class="energie-main energie-main--carte" style="--x:34%;--y:66%;--e:-1.5s"></span>
+                <span class="etincelle-main" style="--x:66%;--y:31%;--e:0s;--dx:-10px"></span>
+                <span class="etincelle-main" style="--x:71%;--y:28%;--e:-.9s;--dx:12px"></span>
+                <span class="etincelle-main" style="--x:68%;--y:34%;--e:-1.7s;--dx:3px"></span>
+                <span class="etincelle-main" style="--x:32%;--y:68%;--e:-.5s;--dx:-9px"></span>
+                <span class="etincelle-main" style="--x:37%;--y:64%;--e:-1.3s;--dx:11px"></span>
+                <span class="etincelle-main" style="--x:34%;--y:71%;--e:-2.1s;--dx:2px"></span>
+              </div>
+            </div>
             <div class="carte__corps">
               <svg class="carte__icone" aria-hidden="true"><use href="#yinyang"/></svg>
               <h3>Massage énergétique</h3>
@@ -454,6 +478,8 @@
           <h2 class="apparition">Découvrir votre propre énergie</h2>
           <p class="apparition" style="--delai:.15s">Chacun de nous porte en lui sa propre énergie.
              Je peux vous initier à cette énergie et vous guider, pas à pas, pour la découvrir.</p>
+          <p class="apparition" style="--delai:.22s">Je peux également vous initier à la <strong>magie blanche</strong>,
+             afin de manifester les synchronicités que vous allez attirer.</p>
           <p class="apparition" style="--delai:.3s">Renseignements et rendez-vous&nbsp;:<br>
              <a href="tel:+33774632371" class="lien-tel">07&nbsp;74&nbsp;63&nbsp;23&nbsp;71</a></p>
         </div>

@@ -565,7 +565,8 @@ figure { margin: 0; }
   width: 170px; height: 170px;
   margin: -85px 0 0 -85px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 244, 210, 1), rgba(255, 210, 130, .7) 22%, rgba(205, 180, 255, .35) 48%, transparent 70%);
+  /* énergie couleur lavande */
+  background: radial-gradient(circle, rgba(246, 240, 255, 1), rgba(205, 188, 245, .75) 22%, rgba(155, 135, 201, .4) 48%, transparent 70%);
   animation: rayonner 3s ease-in-out infinite;
   animation-delay: var(--e, 0s);
 }
@@ -575,13 +576,43 @@ figure { margin: 0; }
   content: "";
   position: absolute; inset: 36%;
   border-radius: 50%;
-  border: 2px solid rgba(255, 236, 185, .95);
-  box-shadow: 0 0 14px rgba(255, 220, 150, .9);
+  border: 2px solid rgba(225, 212, 255, .95);
+  box-shadow: 0 0 14px rgba(185, 165, 235, .9);
   animation: onde-main 3s ease-out infinite;
   animation-delay: var(--e, 0s);
 }
 .energie-main::after { animation-delay: calc(var(--e, 0s) - 1.5s); }
 .energie-main--petite { width: 120px; height: 120px; margin: -60px 0 0 -60px; }
+
+/* Énergie animée dans les mains, sur les photos des cartes de soins.
+   Les photos sont claires : couleurs dorées plus soutenues pour rester visibles. */
+.carte__energie { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.energie-main--carte {
+  width: 120px; height: 120px;
+  margin: -60px 0 0 -60px;
+  /* lavande plus soutenue : les photos sont claires */
+  background: radial-gradient(circle, rgba(236, 228, 255, .95), rgba(170, 148, 222, .62) 28%, rgba(155, 135, 201, .32) 52%, transparent 70%);
+}
+.energie-main--carte::before,
+.energie-main--carte::after { border-color: rgba(140, 118, 196, .95); box-shadow: 0 0 12px rgba(155, 135, 201, .9); }
+/* Étincelles qui s'échappent des mains et montent */
+.etincelle-main {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: 7px; height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #e2d6ff 45%, rgba(155, 135, 201, 0) 75%);
+  box-shadow: 0 0 8px 3px rgba(155, 135, 201, .85);
+  opacity: 0;
+  animation: etincelle-monte 2.4s ease-out infinite;
+  animation-delay: var(--e, 0s);
+}
+@keyframes etincelle-monte {
+  0%   { opacity: 0; transform: translate(0, 0) scale(.6); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx, 8px), -70px) scale(1.1); }
+}
 @keyframes rayonner { 0%, 100% { opacity: .75; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
 @keyframes onde-main { 0% { transform: scale(.4); opacity: .95; } 100% { transform: scale(2.6); opacity: 0; } }
 
