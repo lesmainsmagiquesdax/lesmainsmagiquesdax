@@ -338,6 +338,7 @@ figure { margin: 0; }
 .menu a.actif::after { transform: scaleX(1); }
 .menu a:not(.bouton):hover, .menu a.actif { color: var(--lavande-fonce); }
 .menu .bouton { margin-top: 8px; }
+.menu a { white-space: nowrap; }  /* un lien du menu ne se coupe jamais en deux */
 
 /* ---------- 5. ACCUEIL ---------- */
 .accueil {
@@ -1027,7 +1028,8 @@ figure { margin: 0; }
   .duo__texte h2::after { margin-left: 0; }
 }
 
-@media (min-width: 960px) {
+/* Menu complet seulement sur les grands écrans (sinon menu « burger ») */
+@media (min-width: 1100px) {
   .entete { padding: 0 32px; }
   .menu-bouton { display: none; }
   .menu {
@@ -1175,6 +1177,37 @@ figure { margin: 0; }
 .conseil:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(107, 90, 158, .22); }
 .conseil img { width: 110px; height: 150px; object-fit: cover; object-position: top; border-radius: 10px; }
 .section .conseil__titre { text-align: left; }
+.conseil__nouveau {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--or);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* Lien « Nouvel article » sous le bouton de l'accueil */
+.nouvel-article { margin: 18px 0 0; }
+.nouvel-article a {
+  display: inline-block;
+  max-width: 100%;
+  padding: 8px 18px;
+  border-radius: var(--rayon);   /* coins doux, même si le texte passe sur 2 lignes */
+  background: rgba(255, 255, 255, .78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--or-clair);
+  color: var(--lavande-fonce);
+  font-size: .95rem;
+  text-decoration: none;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.nouvel-article a:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(201, 164, 92, .3); }
+.nouvel-article__etiquette { font-weight: 600; color: #9c7631; margin-right: 4px; }
 .conseil__titre { margin: 0 0 .3em; font-family: var(--police-titre); font-size: 1.45rem; font-weight: 600; line-height: 1.25; color: var(--lavande-fonce); }
 .section .conseil__texte { margin: 0 0 .5em; text-align: left; font-size: .95rem; color: var(--texte-doux); }
 .conseil__lire { font-weight: 600; color: #9c7631; }
