@@ -581,6 +581,7 @@ figure { margin: 0; }
   animation-delay: var(--e, 0s);
 }
 .energie-main::after { animation-delay: calc(var(--e, 0s) - 1.5s); }
+.energie-main--petite { width: 120px; height: 120px; margin: -60px 0 0 -60px; }
 @keyframes rayonner { 0%, 100% { opacity: .75; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
 @keyframes onde-main { 0% { transform: scale(.4); opacity: .95; } 100% { transform: scale(2.6); opacity: 0; } }
 
@@ -678,6 +679,33 @@ figure { margin: 0; }
   padding: 56px 20px;
   text-align: center;
 }
+/* Image animée : main ouverte et spirale d'énergie (au-dessus de la phrase) */
+.main-energie {
+  display: block;
+  width: min(440px, 100%);
+  height: auto;
+  margin: 0 auto 26px;
+  border-radius: 22px;
+  box-shadow: 0 22px 55px rgba(45, 30, 80, .35);
+}
+.main-energie .me-spirale,
+.main-energie .me-bras-groupe,
+.main-energie .me-onde,
+.main-energie .me-orbite { transform-box: view-box; transform-origin: 62px 50px; }
+.me-spirale { animation: rotation 9s linear infinite; }             /* la spirale tourne */
+.me-bras-groupe { animation: rotation 6s linear infinite reverse; }  /* les tourbillons violets, en sens inverse */
+.me-bras { stroke-width: .7; opacity: .8; stroke-dasharray: 18 6 9 5 12 8 6 36; animation: couler 4s linear infinite; }
+.me-impulsion { stroke-width: 2.4; stroke-dasharray: 6 94; animation: couler 2.2s ease-in-out infinite; animation-delay: calc(var(--p) * -.73s); }
+.me-onde { opacity: 0; animation: onde-logo 3.2s ease-out infinite; animation-delay: calc(var(--o) * 1.6s); }
+.me-orbite { animation: rotation var(--d) linear infinite; }
+.me-orbite--inverse { animation-direction: reverse; }
+.me-flux circle { opacity: 0; animation: monter-energie 2.6s ease-in infinite; animation-delay: calc(var(--f) * .5s); }
+.me-halo { animation: pulsation 3s ease-in-out infinite; }
+.me-paume { transform-box: fill-box; transform-origin: center; animation: respirer-paume 3.5s ease-in-out infinite; }
+.me-etoile { transform-box: fill-box; transform-origin: center; animation: scintiller 3.2s ease-in-out infinite; animation-delay: var(--d); }
+.me-main { animation: flotter-main 6s ease-in-out infinite; }
+@keyframes flotter-main { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+
 .phrase-voyage__symbole {
   display: block;
   width: 34px; height: 34px;

@@ -25,12 +25,12 @@ dans les mentions légales).
 |---|---|
 | `images/hero.jpg` | Accueil (provisoire — à remplacer par votre photo) |
 | `images/michael-manzano.jpg` | Portrait, section « Qui suis-je » |
-| `images/energie-mains.jpg` | Section « Découvrir votre propre énergie » (Pexels — énergie et esprits animés ajoutés en CSS) |
+| `images/energie-mains.jpg` | Section « Découvrir votre propre énergie » (Pexels, Jakob Welik — énergie et esprits animés ajoutés en CSS) |
 | `images/magnetisme.jpg` | Ancienne photo « Qui suis-je » (Pexels), plus utilisée |
 | `images/qui-suis-je.jpg` | Ancienne photo « Qui suis-je », plus utilisée |
 | `images/lotus.jpg` | Section « Un soin de l'âme » |
 | `images/holistique.jpg` | Bandeau « Pourquoi holistique ? » |
-| `images/soin-energetique.jpg` | Carte « Soin énergétique » |
+| `images/soin-energetique.jpg` | Carte « Soin énergétique » (Pexels, Jakob Welik) |
 | `images/massage.jpg` | Carte « Massage énergétique » |
 | `images/lavande.jpg` | Bandeau lavande avant le contact |
 
