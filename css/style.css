@@ -781,6 +781,90 @@ figure { margin: 0; }
 }
 .phrase-voyage span { color: #9c7631; } /* doré foncé, lisible sur le fond crème */
 
+/* ---------- Rubrique « Vos témoignages » ---------- */
+.section--temoignages { background: linear-gradient(180deg, var(--lavande-pale), var(--creme)); }
+.section .temoignages__intro { text-align: center; color: var(--texte-doux); }
+.temoignages__liste { display: grid; gap: 18px; margin: 24px 0 36px; }
+.section .temoignages__vide {
+  text-align: center;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--lavande-fonce);
+}
+/* Un témoignage publié */
+.temoignage {
+  margin: 0;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-left: 3px solid var(--lavande);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+.section .temoignage__note { margin: 0 0 6px; color: var(--or); letter-spacing: .1em; text-align: left; }
+.temoignage blockquote {
+  margin: 0 0 10px;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--texte);
+}
+.section .temoignage blockquote p { margin: 0 0 .7em; text-align: left; }
+.section .temoignage blockquote p:last-child { margin-bottom: 0; }
+.section .temoignage__source {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--lavande-pale);
+  color: var(--lavande-fonce);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.temoignage figcaption { font-size: .92rem; color: var(--texte-doux); }
+.temoignage figcaption span { color: var(--lavande-fonce); }
+
+/* Formulaire */
+.temoignage-form {
+  display: grid; gap: 14px;
+  padding: 26px 24px;
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+.temoignage-form h3 { margin: 0 0 4px; text-align: center; }
+.temoignage-form__ligne { display: grid; gap: 14px; }
+@media (min-width: 600px) { .temoignage-form__ligne { grid-template-columns: 1fr 1fr; } }
+.temoignage-form label { display: grid; gap: 6px; font-size: .95rem; font-weight: 600; color: var(--texte); }
+.temoignage-form input[type="text"],
+.temoignage-form select,
+.temoignage-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d9d0ea;
+  border-radius: 10px;
+  background: var(--creme);
+  font: inherit;
+  font-weight: 400;
+  color: var(--texte);
+}
+.temoignage-form textarea { resize: vertical; min-height: 120px; }
+.temoignage-form input:focus,
+.temoignage-form select:focus,
+.temoignage-form textarea:focus { outline: 2px solid var(--lavande); outline-offset: 1px; border-color: var(--lavande); }
+.temoignage-form .temoignage-form__accord { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: .92rem; }
+.temoignage-form__accord input { margin-top: 5px; accent-color: var(--lavande-fonce); }
+.temoignage-form .bouton { justify-self: center; cursor: pointer; font: inherit; font-weight: 600; }
+.section .temoignage-form__retour { margin: 0; min-height: 1.2em; text-align: center; font-weight: 600; }
+.temoignage-form__retour.succes { color: #3f8f5f; }
+.temoignage-form__retour.erreur { color: #c0504d; }
+.section .temoignage-form__info { margin: 0; text-align: center; font-size: .85rem; color: var(--texte-doux); }
+
 /* ---------- Rubrique « Le soin à distance » ---------- */
 .section--distance {
   background:

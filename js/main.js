@@ -229,6 +229,55 @@ if (avecSouris && !moinsAnimations) {
 }
 
 
+// ---------- Formulaire « Laisser un témoignage » ----------
+// Ouvre la messagerie du visiteur avec le témoignage déjà rédigé.
+// ✏️ Adresse qui reçoit les témoignages :
+const ADRESSE_TEMOIGNAGES = 'angedamourmichael@gmail.com';
+const formTemoignage = document.getElementById('temoignage-form');
+
+if (formTemoignage) {
+  const retour = document.getElementById('temoignage-retour');
+  formTemoignage.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const champ = (nom) => (formTemoignage.elements[nom].value || '').trim();
+
+    // Vérifications simples, avec un message clair
+    if (!champ('prenom') || !champ('message')) {
+      retour.textContent = 'Merci d\'indiquer votre prénom et votre témoignage.';
+      retour.className = 'temoignage-form__retour erreur';
+      return;
+    }
+    if (!formTemoignage.elements.accord.checked) {
+      retour.textContent = 'Merci de cocher la case pour accepter la publication.';
+      retour.className = 'temoignage-form__retour erreur';
+      return;
+    }
+
+    const etoiles = '★'.repeat(Number(champ('note'))) + ` (${champ('note')}/5)`;
+    const corps = [
+      'Nouveau témoignage pour Les Mains Magiques Dax',
+      '',
+      `Prénom : ${champ('prenom')}`,
+      `Ville : ${champ('ville') || '(non précisée)'}`,
+      `Soin reçu : ${champ('soin')}`,
+      `Note : ${etoiles}`,
+      '',
+      'Témoignage :',
+      champ('message'),
+      '',
+      'J\'accepte que ce témoignage soit publié sur le site (prénom et ville uniquement).',
+    ].join('\n');
+
+    window.location.href = `mailto:${ADRESSE_TEMOIGNAGES}`
+      + `?subject=${encodeURIComponent('Témoignage – ' + champ('prenom'))}`
+      + `&body=${encodeURIComponent(corps)}`;
+
+    retour.textContent = 'Votre messagerie s\'ouvre avec votre témoignage : il ne vous reste qu\'à appuyer sur « Envoyer ». Merci beaucoup ! 💜';
+    retour.className = 'temoignage-form__retour succes';
+  });
+}
+
+
 // ---------- Année automatique dans le pied de page ----------
 const annee = document.getElementById('annee');
 if (annee) annee.textContent = new Date().getFullYear();

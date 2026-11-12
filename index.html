@@ -614,6 +614,90 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         TÉMOIGNAGES
+         ✏️ POUR AJOUTER UN TÉMOIGNAGE REÇU : copier le bloc modèle
+         ci-dessous dans <div class="temoignages__liste">, le remplir,
+         puis supprimer le paragraphe « temoignages__vide ».
+         Ne publier que de vrais témoignages, avec l'accord de leur auteur.
+
+         <figure class="temoignage">
+           <p class="temoignage__note" aria-label="Note : 5 sur 5">★★★★★</p>
+           <blockquote>Le texte du témoignage…</blockquote>
+           <figcaption><strong>Prénom</strong> · Ville · <span>Soin énergétique</span></figcaption>
+         </figure>
+         ========================================================= -->
+    <section class="section section--temoignages" id="temoignages">
+      <div class="conteneur conteneur--etroit">
+        <h2 class="apparition">Vos témoignages</h2>
+        <p class="temoignages__intro apparition">Vous avez reçu un soin&nbsp;? Votre expérience peut aider d'autres
+           personnes à franchir le pas. Merci du fond du cœur pour vos mots.</p>
+
+        <div class="temoignages__liste">
+          <!-- Avis Google de Morgane Fernandez (novembre 2026), recopié tel quel -->
+          <figure class="temoignage apparition">
+            <p class="temoignage__source">Avis Google</p>
+            <blockquote>
+              <p>✨ Il y a des rencontres qui ne doivent rien au hasard… ✨</p>
+              <p>Mickaël est une belle âme, un être doté d'une sensibilité et d'une énergie particulières.
+                 À travers ses mains, son magnétisme et ses massages, il partage bien plus qu'un simple moment
+                 de détente&nbsp;: une véritable parenthèse de reconnexion, d'apaisement et d'harmonie.</p>
+              <p>Son univers est empreint de bienveillance, de spiritualité et de magie. Il possède ce petit
+                 quelque chose d'unique qui ne s'explique pas toujours avec des mots, mais qui se ressent.</p>
+              <p>Une belle personne, des mains en or et une âme lumineuse. Je vous invite à découvrir son
+                 univers, vous pourriez être agréablement surpris. 🦋🔮💗🙏🏼🌈</p>
+            </blockquote>
+            <figcaption><strong>Morgane F.</strong> · novembre 2026 · <span>Magnétisme et massage</span></figcaption>
+          </figure>
+        </div>
+
+        <!-- Formulaire : ouvre la messagerie du visiteur avec le témoignage déjà rédigé -->
+        <form class="temoignage-form apparition" id="temoignage-form" novalidate>
+          <h3>Laisser un témoignage</h3>
+          <div class="temoignage-form__ligne">
+            <label>Prénom (ou initiales) *
+              <input type="text" name="prenom" required maxlength="40" autocomplete="given-name">
+            </label>
+            <label>Ville
+              <input type="text" name="ville" maxlength="40" autocomplete="address-level2">
+            </label>
+          </div>
+          <div class="temoignage-form__ligne">
+            <label>Soin reçu
+              <select name="soin">
+                <option>Soin énergétique</option>
+                <option>Massage énergétique</option>
+                <option>Soin à distance</option>
+                <option>Initiation à l'énergie</option>
+                <option>Autre</option>
+              </select>
+            </label>
+            <label>Votre note
+              <select name="note">
+                <option value="5">★★★★★ (5 sur 5)</option>
+                <option value="4">★★★★ (4 sur 5)</option>
+                <option value="3">★★★ (3 sur 5)</option>
+                <option value="2">★★ (2 sur 5)</option>
+                <option value="1">★ (1 sur 5)</option>
+              </select>
+            </label>
+          </div>
+          <label>Votre témoignage *
+            <textarea name="message" rows="5" required maxlength="1500" placeholder="Racontez votre expérience, ce que vous avez ressenti…"></textarea>
+          </label>
+          <label class="temoignage-form__accord">
+            <input type="checkbox" name="accord" required>
+            J'accepte que mon témoignage soit publié sur ce site (avec mon prénom et ma ville uniquement).
+          </label>
+          <button type="submit" class="bouton">✉️ Envoyer mon témoignage</button>
+          <p class="temoignage-form__retour" id="temoignage-retour" role="status" aria-live="polite"></p>
+          <p class="temoignage-form__info">Les témoignages sont lus avant d'être publiés, et ne sont publiés qu'avec
+             votre accord. Vous pouvez aussi m'écrire directement à
+             <a href="mailto:angedamourmichael@gmail.com">angedamourmichael@<wbr>gmail.com</a>.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- Bandeau lavande avec la phrase d'accroche -->
     <div class="bandeau bandeau--fin" aria-hidden="true">
       <div class="bandeau__fond parallaxe" style="background-image:url('images/lavande.jpg')"></div>
@@ -743,6 +827,7 @@
             <p class="contact__reseaux"><strong>Suivez-moi&nbsp;:</strong>
               <a href="https://www.facebook.com/share/19wVv1EwdJ/" target="_blank" rel="noopener">Facebook</a>
             </p>
+            <p class="contact__reseaux"><a href="#temoignages">⭐ Laisser un témoignage</a></p>
           </div>
 
           <!-- CARTE GOOGLE MAPS : l'adresse du cabinet est après « q= »
