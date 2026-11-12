@@ -24,7 +24,9 @@ dans les mentions légales).
 | Fichier | Emplacement |
 |---|---|
 | `images/hero.jpg` | Accueil (provisoire — à remplacer par votre photo) |
-| `images/magnetisme.jpg` | Section « Qui suis-je » (Pexels — les esprits et bougies animés sont ajoutés en CSS) |
+| `images/michael-manzano.jpg` | Portrait, section « Qui suis-je » |
+| `images/energie-mains.jpg` | Section « Découvrir votre propre énergie » (Pexels — énergie et esprits animés ajoutés en CSS) |
+| `images/magnetisme.jpg` | Ancienne photo « Qui suis-je » (Pexels), plus utilisée |
 | `images/qui-suis-je.jpg` | Ancienne photo « Qui suis-je », plus utilisée |
 | `images/lotus.jpg` | Section « Un soin de l'âme » |
 | `images/holistique.jpg` | Bandeau « Pourquoi holistique ? » |

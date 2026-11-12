@@ -491,6 +491,22 @@ figure { margin: 0; }
 }
 .duo__image--arche, .duo__image--arche::after { border-radius: 240px 240px var(--rayon) var(--rayon); }
 
+/* Portrait de Michael Manzano (section « Qui suis-je ») */
+.duo__image--portrait img { height: auto; object-position: center 45%; }
+/* Nom en calligraphie sur un léger dégradé, en bas du portrait */
+.duo__legende {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 48px 16px 22px;
+  text-align: center;
+  font-family: var(--police-signature);
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(45, 30, 80, .6);
+  background: linear-gradient(180deg, transparent, rgba(63, 58, 79, .55));
+  pointer-events: none;
+}
+
 /* Photo de magnétisme : présences lumineuses (« esprits ») qui s'élèvent
    et lueurs de bougies qui vacillent, par-dessus la photo */
 .duo__image--esprits img { height: auto; object-position: center 30%; }
