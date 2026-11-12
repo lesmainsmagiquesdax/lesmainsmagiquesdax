@@ -1055,6 +1055,130 @@ figure { margin: 0; }
   .particules, .etincelle { display: none; }
 }
 
+/* ---------- 15. ARTICLES (page « Mes conseils ») ---------- */
+/* Texte lu par les lecteurs d'écran mais caché à l'œil */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.article h1 { font-size: clamp(2rem, 6vw, 2.8rem); }
+.article__rubrique {
+  margin: 0 0 .5em;
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #9c7631;
+}
+.article__chapeau {
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--texte-doux);
+}
+.article__auteur {
+  font-size: .92rem;
+  color: var(--texte-doux);
+  padding-bottom: 1.2em;
+  margin-bottom: 1.6em;
+  border-bottom: 1px solid var(--or-clair);
+}
+
+/* Les 5 phrases : une carte par phrase, ✗ en rouge doux, ✓ en vert doux */
+.phrases { list-style: none; padding: 0; margin: 0 0 2em; display: grid; gap: 14px; }
+.phrases li {
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  padding: 14px 20px;
+  box-shadow: var(--ombre);
+}
+.phrases p { margin: 0; }
+.phrases__eviter { color: var(--texte-doux); }
+.phrases__eviter > span:first-child { color: #c0504d; font-weight: 700; }
+.phrases__dire { margin-top: 6px !important; font-weight: 600; color: var(--texte); }
+.phrases__dire > span:first-child { color: #3f8f5f; font-weight: 700; }
+
+.article__visuel { max-width: 420px; margin: 2.5em auto; }
+.article__visuel img { width: 100%; height: auto; border-radius: var(--rayon); box-shadow: 0 20px 50px rgba(107, 90, 158, .25); }
+.article__visuel figcaption { margin-top: 12px; text-align: center; font-size: .9rem; color: var(--texte-doux); }
+
+/* Encadré « auteur » avec photo et prise de rendez-vous */
+.auteur {
+  display: flex; gap: 20px; align-items: flex-start;
+  margin-top: 2.5em;
+  padding: 22px;
+  background: var(--lavande-pale);
+  border-radius: var(--rayon);
+}
+.auteur__photo {
+  flex: none;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 40%;
+  border: 2px solid var(--or-clair);
+}
+.auteur__nom {
+  margin: 0 0 .2em;
+  font-family: var(--police-signature);
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: #9c7631;
+}
+.auteur__marque {
+  margin: 0 0 .6em;
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--lavande-fonce);
+  font-weight: 600;
+}
+.auteur__coord { list-style: none; padding: 0; margin: 0 0 1.1em; display: grid; gap: 4px; }
+.auteur__coord a { overflow-wrap: anywhere; }
+
+/* Les phrases d'élan : « Sortez de votre zone de confort… » */
+.elan { list-style: none; padding: 0; margin: 1.4em 0 2em; display: grid; gap: 10px; }
+.elan li {
+  position: relative;
+  padding: 10px 18px 10px 44px;
+  border-left: 3px solid var(--or);
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+  background: linear-gradient(90deg, rgba(230, 211, 163, .25), transparent);
+  font-family: var(--police-titre);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--lavande-fonce);
+}
+.elan li::before { content: "✦"; position: absolute; left: 16px; top: 10px; color: var(--or); font-size: 1rem; }
+/* La dernière phrase, plus forte */
+.elan li:last-child { font-style: italic; color: #9c7631; }
+
+.auteur__actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 0; }
+@media (max-width: 540px) {
+  .auteur { flex-direction: column; align-items: center; text-align: center; }
+  .auteur__actions { justify-content: center; }
+}
+
+/* Bloc « Mes conseils » sur la page d'accueil : lien vers l'article */
+.conseil {
+  display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: center;
+  max-width: 720px; margin: 16px auto 0;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--or-clair);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  color: var(--texte);
+  text-decoration: none;
+  transition: transform .4s var(--douceur), box-shadow .4s ease;
+}
+.conseil:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(107, 90, 158, .22); }
+.conseil img { width: 110px; height: 150px; object-fit: cover; object-position: top; border-radius: 10px; }
+.section .conseil__titre { text-align: left; }
+.conseil__titre { margin: 0 0 .3em; font-family: var(--police-titre); font-size: 1.45rem; font-weight: 600; line-height: 1.25; color: var(--lavande-fonce); }
+.section .conseil__texte { margin: 0 0 .5em; text-align: left; font-size: .95rem; color: var(--texte-doux); }
+.conseil__lire { font-weight: 600; color: #9c7631; }
+
 /* ---------- 14. PAGE MENTIONS LÉGALES ---------- */
 .page-simple { padding: calc(var(--hauteur-entete) + 48px) 0 72px; }
 .page-simple h2 { text-align: left; font-size: 1.7rem; margin-top: 1.5em; }
