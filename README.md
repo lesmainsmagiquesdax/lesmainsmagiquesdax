@@ -47,7 +47,6 @@ une fois remplis, retirer `class="a-completer"` pour enlever le surlignage.
 - l'email (deux fois dans le lien `mailto:` de `index.html`)
 - si un tarif change, le modifier aussi dans ces données (`"price"`)
   et dans la réponse « Combien coûte une séance ? » de la FAQ (texte visible + données)
-- les liens Facebook / Instagram (ou supprimer la ligne)
 - les mentions légales : nom, statut, SIRET, hébergeur
 
 Les commentaires `✏️` dans le code indiquent les endroits à modifier.
