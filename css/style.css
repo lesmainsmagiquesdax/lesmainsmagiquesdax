@@ -906,6 +906,25 @@ figure { margin: 0; }
 .tarifs-initiation span { color: var(--texte-doux); font-weight: 400; white-space: nowrap; }
 .tarifs-initiation .carte__prix { font-size: 1.4rem; }
 
+/* Carte « Formule couple » : large, sous les trois autres cartes */
+.carte--couple { border: 2px solid var(--or-clair); }
+/* Téléphone : image haute pour voir les deux scènes (avant / après) */
+.carte--couple .carte__image { aspect-ratio: 800 / 1421; }   /* image entière sur téléphone */
+.carte--couple .carte__image img { object-position: center; }
+.carte--couple .carte__badge { top: auto; bottom: 12px; }   /* en bas, pour ne pas cacher les bulles */
+.carte__image--attente {
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 45%, #fbe4ef 0%, var(--lavande-pale) 45%, #cbbbe8 100%);
+}
+.couple__symbole { font-size: 4.5rem; filter: drop-shadow(0 6px 14px rgba(107, 90, 158, .35)); }
+@media (min-width: 720px) {
+  .section .carte--couple { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.6fr; align-items: center; width: auto; }
+  .carte--couple .carte__image { height: 100%; aspect-ratio: auto; min-height: 260px; }
+  .carte--couple .carte__image img { position: absolute; inset: 0; }
+  .carte--couple .carte__corps { padding: 24px 32px; }
+  .carte--couple .carte__icone { margin-top: 0; }
+}
+
 /* Carte « Soin à distance » dans « Mes soins » : mise en avant */
 .carte--distance { border: 2px solid var(--lavande); box-shadow: 0 18px 44px rgba(107, 90, 158, .28); }
 .carte--distance .carte__image img { object-position: center 30%; }
