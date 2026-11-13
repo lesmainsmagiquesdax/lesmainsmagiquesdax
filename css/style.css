@@ -891,6 +891,7 @@ figure { margin: 0; }
 /* Illustration du moine (dessin animé en SVG) */
 .duo__image--moine { width: 100%; }
 .duo__image--moine svg { display: block; width: 100%; height: auto; }
+.duo__image--moine img { aspect-ratio: auto; height: auto; }   /* image entière, sans recadrage */
 .moine .mo-etoile { transform-box: fill-box; transform-origin: center; animation: scintiller 3.4s ease-in-out infinite; animation-delay: var(--d); }
 .moine .mo-flamme { transform-box: fill-box; transform-origin: 50% 100%; animation: flamme calc(var(--t) / 2) ease-in-out infinite alternate; }
 .moine .mo-halo { transform-box: fill-box; transform-origin: center; animation: vaciller var(--t) ease-in-out infinite alternate; }
