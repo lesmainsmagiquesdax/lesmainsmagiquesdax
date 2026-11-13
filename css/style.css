@@ -825,6 +825,8 @@ figure { margin: 0; }
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+.section .temoignages__mention { margin: -12px auto 30px; text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }
+.section .temoignage__titre { margin: 0 0 6px; text-align: left; font-weight: 600; color: var(--lavande-fonce); }
 .temoignage figcaption { font-size: .92rem; color: var(--texte-doux); }
 .temoignage figcaption span { color: var(--lavande-fonce); }
 
