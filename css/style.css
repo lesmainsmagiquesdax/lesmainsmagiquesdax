@@ -1445,8 +1445,18 @@ figure { margin: 0; }
 .section .cabinet__lien { text-align: center; margin: 0; }
 .cabinet__lien a { font-weight: 600; }
 /* Photo du jardin (rubrique « Un soin de l'âme ») : légende plus discrète */
-.duo__image--jardin img { height: auto; object-position: center 60%; } /* garde le format 4/5 de l'arche */
-.duo__image--jardin .duo__legende { font-size: 1.7rem; padding-bottom: 26px; }
+/* Photo avec légende EN DESSOUS (jardin, rubrique « Un soin de l'âme ») */
+.duo__photo { margin: 0; }
+.duo__image--jardin img { height: auto; aspect-ratio: auto; }   /* photo entière, sans recadrage */
+.duo__photo-legende {
+  margin-top: 12px;
+  text-align: center;
+  font-family: var(--police-signature);
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: #9c7631;
+}
+@media (min-width: 900px) { .duo--inverse .duo__photo { order: 2; } }
 
 /* Lien vers la page « Mon cabinet » (partie contact de l'accueil) */
 .lien-cabinet { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
