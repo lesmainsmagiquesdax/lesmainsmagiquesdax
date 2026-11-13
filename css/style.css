@@ -283,6 +283,7 @@ figure { margin: 0; }
 }
 .entete__marque {
   display: flex; align-items: center; gap: 8px;
+  white-space: nowrap;   /* le nom ne passe jamais sur 2 lignes */
   text-decoration: none;
   font-family: var(--police-titre);
   font-size: 1.3rem;
@@ -1322,7 +1323,7 @@ figure { margin: 0; }
 }
 
 /* Menu complet seulement sur les grands écrans (sinon menu « burger ») */
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .entete { padding: 0 32px; }
   .menu-bouton { display: none; }
   .menu {
