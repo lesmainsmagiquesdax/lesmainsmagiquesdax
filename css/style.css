@@ -553,7 +553,7 @@ figure { margin: 0; }
 
 /* Photo « énergie des mains » : voile mystique sur les bords,
    puis lumière qui rayonne des deux mains */
-.duo__image--energie img { object-position: center; }
+.duo__image--energie img { object-position: center; aspect-ratio: auto; height: auto; } /* image entière, sans recadrage */
 .ambiance {
   position: absolute; inset: 0;
   pointer-events: none;
