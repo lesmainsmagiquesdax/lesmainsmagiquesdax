@@ -986,6 +986,19 @@ figure { margin: 0; }
   100% { opacity: 0; transform: translateY(-34px); }
 }
 
+/* Titre de rubrique encadré de traits dorés (ex. « ✦ Initiations ✦ ») */
+.section .rubrique-titre {
+  display: flex; align-items: center; gap: 16px;
+  margin: 0 0 28px;
+  text-align: center;
+  font-family: var(--police-titre);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 500;
+  color: var(--lavande-fonce);
+}
+.rubrique-titre::before, .rubrique-titre::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+.rubrique-titre::after { background: linear-gradient(90deg, var(--or), transparent); }
+
 /* Section « Découvrir votre propre énergie » */
 .section--energie { background: linear-gradient(180deg, var(--creme), var(--lavande-pale)); }
 
