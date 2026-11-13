@@ -925,6 +925,7 @@ figure { margin: 0; }
 
 /* Carte « Formule couple » : large, sous les trois autres cartes */
 .carte--couple { border: 2px solid var(--or-clair); }
+.section .carte__sous-titre { margin: -6px 0 4px; text-align: center; font-size: .95rem; font-weight: 600; color: #9c7631; }
 /* Téléphone : image haute pour voir les deux scènes (avant / après) */
 .carte--couple .carte__image { aspect-ratio: 800 / 1421; }   /* image entière sur téléphone */
 .carte--couple .carte__image img { object-position: center; }
