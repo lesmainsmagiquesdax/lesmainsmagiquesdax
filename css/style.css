@@ -1438,6 +1438,16 @@ figure { margin: 0; }
   .galerie__haute { grid-column: 1 / -1; max-width: 520px; justify-self: center; }
 }
 
+/* Rubrique « Mon cabinet » sur l'accueil */
+.section .cabinet__intro { text-align: center; color: var(--texte-doux); max-width: 640px; margin: 0 auto; }
+.galerie--accueil { max-width: 960px; margin: 1.6em auto 1em; }
+@media (min-width: 640px) { .galerie--accueil { grid-template-columns: 1fr 1fr; } }
+.section .cabinet__lien { text-align: center; margin: 0; }
+.cabinet__lien a { font-weight: 600; }
+/* Photo du jardin (rubrique « Un soin de l'âme ») : légende plus discrète */
+.duo__image--jardin img { height: auto; object-position: center 60%; } /* garde le format 4/5 de l'arche */
+.duo__image--jardin .duo__legende { font-size: 1.7rem; padding-bottom: 26px; }
+
 /* Lien vers la page « Mon cabinet » (partie contact de l'accueil) */
 .lien-cabinet { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .lien-cabinet img { width: 64px; height: 48px; object-fit: cover; border-radius: 8px; box-shadow: var(--ombre); }
