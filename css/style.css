@@ -1445,6 +1445,18 @@ figure { margin: 0; }
 .section .cabinet__lien { text-align: center; margin: 0; }
 .cabinet__lien a { font-weight: 600; }
 /* Photo du jardin (rubrique « Un soin de l'âme ») : légende plus discrète */
+/* Encadré « Quand l'émotionnel se ressent dans le corps » + son image à côté */
+.emotion { display: grid; gap: 28px; align-items: center; max-width: 980px; margin: 3em auto 2em; }
+.emotion .encadre { margin: 0; }
+.emotion__image { margin: 0 auto; max-width: 420px; }
+.emotion__image img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--rayon);
+  box-shadow: 0 20px 50px rgba(107, 90, 158, .25);
+}
+@media (min-width: 820px) { .emotion { grid-template-columns: .9fr 1.1fr; gap: 40px; } }
+.citation--etroite { max-width: 720px; margin-left: auto; margin-right: auto; }
+
 /* Photo avec légende EN DESSOUS (jardin, rubrique « Un soin de l'âme ») */
 .duo__photo { margin: 0; }
 .duo__image--jardin img { height: auto; aspect-ratio: auto; }   /* photo entière, sans recadrage */
