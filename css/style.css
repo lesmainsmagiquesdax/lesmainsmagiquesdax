@@ -1392,6 +1392,55 @@ figure { margin: 0; }
   .auteur__actions { justify-content: center; }
 }
 
+/* Article : sous-titres (h3) */
+.page-simple h3 { margin: 1.4em 0 .4em; font-size: 1.35rem; color: #9c7631; }
+
+/* Article : grande photo (cascade) */
+.article__visuel--large { max-width: 560px; }
+.article__credit { font-size: .82rem; font-style: normal; opacity: .85; }
+
+/* Article : prière (texte en vers, centré) */
+.priere {
+  margin: 2em auto;
+  padding: 28px 24px;
+  max-width: 560px;
+  text-align: center;
+  background: linear-gradient(180deg, #24154a, #160c30);
+  border-radius: var(--rayon);
+  box-shadow: 0 20px 50px rgba(45, 30, 80, .3);
+  color: #f1ecfa;
+}
+.page-simple .priere p {
+  margin: 0 0 1.2em;
+  text-align: center;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+.page-simple .priere p::after { content: "✦"; display: block; margin-top: .9em; color: var(--or); font-style: normal; font-size: .9rem; }
+.page-simple .priere .priere__fin { margin-bottom: 0; }
+.page-simple .priere .priere__fin::after { content: none; }
+.priere strong { color: var(--or-clair); font-size: 1.5rem; }
+
+/* Page « Mon cabinet » : galerie de photos */
+.galerie { display: grid; gap: 18px; margin: 2em 0; }
+.galerie figure { margin: 0; }
+.galerie img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--rayon);
+  box-shadow: 0 16px 40px rgba(107, 90, 158, .22);
+}
+.galerie figcaption { margin-top: 8px; text-align: center; font-size: .92rem; color: var(--texte-doux); font-style: italic; }
+@media (min-width: 760px) {
+  .galerie { grid-template-columns: 1fr 1fr; }
+  .galerie__haute { grid-column: 1 / -1; max-width: 520px; justify-self: center; }
+}
+
+/* Lien vers la page « Mon cabinet » (partie contact de l'accueil) */
+.lien-cabinet { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.lien-cabinet img { width: 64px; height: 48px; object-fit: cover; border-radius: 8px; box-shadow: var(--ombre); }
+
 /* Bloc « Mes conseils » sur la page d'accueil : lien vers l'article */
 .conseil {
   display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: center;
