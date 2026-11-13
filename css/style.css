@@ -887,8 +887,30 @@ figure { margin: 0; }
   font-size: .95rem;
 }
 @media (max-width: 899px) { .section .distance__infos { justify-content: center; } }
-.section .lien-distance { margin: 18px auto 0; text-align: center; font-size: 1rem; }
-.lien-distance a { font-weight: 600; }
+/* Moins d'espace entre « Mes soins » et la rubrique « Le soin à distance » */
+.section.section--soins { padding-bottom: 40px; }
+.section.section--distance { padding-top: 40px; }
+
+/* Carte « Soin à distance » dans « Mes soins » : mise en avant */
+.carte--distance { border: 2px solid var(--lavande); box-shadow: 0 18px 44px rgba(107, 90, 158, .28); }
+.carte--distance .carte__image img { object-position: center 30%; }
+.carte__badge {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .9);
+  color: var(--lavande-fonce);
+  font-size: .82rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(45, 30, 80, .25);
+}
+.section .carte__lien { margin: 0; text-align: center; }
+.carte__lien a { font-weight: 600; }
+/* 3 cartes : sur tablette, la 3e est centrée sous les deux autres ; sur grand écran, les 3 côte à côte */
+@media (min-width: 720px) and (max-width: 999px) {
+  .carte--distance { grid-column: 1 / -1; justify-self: center; width: calc(50% - 14px); }
+}
+@media (min-width: 1000px) { .section .cartes { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
 
 /* Illustration du moine (dessin animé en SVG) */
 .duo__image--moine { width: 100%; }
