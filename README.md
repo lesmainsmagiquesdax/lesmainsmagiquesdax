@@ -29,7 +29,7 @@ dans les mentions légales).
 | `images/magnetisme.jpg` | Ancienne photo « Qui suis-je » (Pexels), plus utilisée |
 | `images/qui-suis-je.jpg` | Ancienne photo « Qui suis-je », plus utilisée |
 | `images/lotus.jpg` | Section « Un soin de l'âme » |
-| `images/holistique.jpg` | Bandeau « Pourquoi holistique ? » |
+| `images/holistique.jpg` | Ancien fond du bandeau « Pourquoi holistique ? », plus utilisé (le fond est maintenant `soin-a-distance.jpg`) |
 | `images/soin-energetique.jpg` | Carte « Soin énergétique » (Pexels, Jakob Welik) |
 | `images/massage.jpg` | Carte « Massage énergétique » |
 | `images/lavande.jpg` | Bandeau lavande avant le contact |

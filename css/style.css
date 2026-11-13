@@ -965,6 +965,9 @@ figure { margin: 0; }
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgba(107, 90, 158, .25), rgba(63, 58, 79, .35));
 }
+/* Fond du bandeau « Pourquoi holistique ? » : le moine, cadré sur son visage et son cœur */
+.bandeau__fond--moine { background-position: center 38%; }
+
 /* Carte "verre dépoli" par-dessus la photo */
 .verre {
   background: rgba(251, 248, 241, .78);
