@@ -1658,7 +1658,8 @@ figure { margin: 0; }
 
 /* Image « L'univers vit en nous » : entre le bandeau « Pourquoi holistique ? » et « Mes soins » */
 .section.section--univers { padding: 48px 16px 32px; }
-.section--univers + .section--soins { padding-top: 40px; }
+/* « Mes soins » juste après la phrase « boussole du cœur » : espace réduit */
+.phrase-voyage + .section--soins { padding-top: 16px; }
 .univers { margin: 0 auto; max-width: 520px; }
 .univers img {
   display: block; width: 100%; height: auto;
