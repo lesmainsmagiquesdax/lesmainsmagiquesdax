@@ -930,6 +930,13 @@ figure { margin: 0; }
 .carte--couple .carte__image { aspect-ratio: 800 / 1421; }   /* image entière sur téléphone */
 .carte--couple .carte__image img { object-position: center; }
 .carte--couple .carte__badge { top: auto; bottom: 12px; }   /* en bas, pour ne pas cacher les bulles */
+/* Téléphone : le texte « Formule couple » d'abord, l'image (bande dessinée) en dessous */
+@media (max-width: 719px) {
+  .carte--couple { display: flex; flex-direction: column; }
+  .carte--couple .carte__image { order: 2; }
+  .carte--couple .carte__corps { padding-top: 24px; }
+  .carte--couple .carte__icone { margin-top: 0; }
+}
 .carte__image--attente {
   display: grid; place-items: center;
   background: radial-gradient(circle at 50% 45%, #fbe4ef 0%, var(--lavande-pale) 45%, #cbbbe8 100%);
