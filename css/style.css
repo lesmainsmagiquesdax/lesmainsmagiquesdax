@@ -1584,6 +1584,16 @@ figure { margin: 0; }
   box-shadow: 0 20px 50px rgba(107, 90, 158, .25);
 }
 @media (min-width: 820px) { .emotion { grid-template-columns: .9fr 1.1fr; gap: 40px; } }
+
+/* Image « L'univers vit en nous » : entre le bandeau « Pourquoi holistique ? » et « Mes soins » */
+.section.section--univers { padding: 48px 16px 32px; }
+.section--univers + .section--soins { padding-top: 40px; }
+.univers { margin: 0 auto; max-width: 520px; }
+.univers img {
+  display: block; width: 100%; height: auto;
+  border-radius: var(--rayon);
+  box-shadow: 0 20px 50px rgba(107, 90, 158, .3);
+}
 .citation--etroite { max-width: 720px; margin-left: auto; margin-right: auto; }
 
 /* Photo avec légende EN DESSOUS (jardin, rubrique « Un soin de l'âme ») */
