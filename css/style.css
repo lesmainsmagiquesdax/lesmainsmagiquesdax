@@ -1616,6 +1616,7 @@ figure { margin: 0; }
 /* Encadré « Quand l'émotionnel se ressent dans le corps » + son image à côté */
 .emotion { display: grid; gap: 28px; align-items: center; max-width: 980px; margin: 3em auto 2em; }
 .emotion .encadre { margin: 0; }
+.emotion .encadre--papillons p { text-align: left; }   /* lecture plus douce, sans grands blancs */
 .emotion__image { margin: 0 auto; max-width: 420px; }
 .emotion__image img {
   display: block; width: 100%; height: auto;
