@@ -1677,6 +1677,68 @@ figure { margin: 0; }
     url('../images/papillon-4.webp') right 66px bottom 8px / 38px auto no-repeat;
 }
 .encadre--papillons h3 { text-align: center; text-wrap: balance; }
+
+/* Version animée (créée par js/main.js) : les images immobiles laissent place
+   aux fées qui flottent en scintillant et aux papillons qui battent des ailes */
+.encadre--anime::after { background: none; }
+.decor-magique { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.decor { position: absolute; display: block; }
+.decor img { display: block; width: 100%; height: auto; }
+/* positions et tailles (téléphone) */
+.fee--1      { left: 4px;   top: 8px;     width: 60px; }
+.papillon--1 { left: 66px;  top: 10px;    width: 32px; }
+.papillon--2 { right: 2px;  top: 2px;     width: 70px; }
+.fee--2      { right: 72px; top: 8px;     width: 60px; }
+.papillon--3 { left: 2px;   bottom: 2px;  width: 80px; }
+.fee--3      { right: 4px;  bottom: 12px; width: 60px; }
+.papillon--4 { right: 66px; bottom: 8px;  width: 38px; }
+@media (min-width: 560px) {
+  .fee--1      { left: 6px;   top: 10px;    width: 80px; }
+  .papillon--1 { left: 88px;  top: 12px;    width: 40px; }
+  .papillon--2 { right: 2px;  top: 2px;     width: 96px; }
+  .fee--2      { right: 98px; top: 10px;    width: 80px; }
+  .papillon--3 { left: 2px;   bottom: 2px;  width: 108px; }
+  .fee--3      { right: 6px;  bottom: 16px; width: 80px; }
+  .papillon--4 { right: 88px; bottom: 10px; width: 48px; }
+}
+/* les fées flottent doucement et scintillent */
+.fee { animation: fee-vole 8s ease-in-out infinite; }
+.fee img { animation: fee-scintille 2.6s ease-in-out infinite; }
+.fee--2 { animation-duration: 9.5s; animation-delay: -3s; }
+.fee--3 { animation-duration: 7s; animation-delay: -5s; }
+.fee--2 img { animation-delay: -1s; }
+.fee--3 img { animation-delay: -1.8s; }
+@keyframes fee-vole {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%      { transform: translate(9px, -6px) rotate(-4deg); }
+  50%      { transform: translate(14px, 3px) rotate(2deg); }
+  75%      { transform: translate(5px, 8px) rotate(4deg); }
+}
+@keyframes fee-scintille {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 170, .5)); }
+  50%      { filter: brightness(1.25) drop-shadow(0 0 7px rgba(255, 236, 170, .95)); }
+}
+/* les papillons voltigent et battent des ailes */
+.papillon { animation: papillon-voltige 6s ease-in-out infinite; }
+.papillon img { transform-origin: 50% 50%; animation: battement 3.2s ease-in-out infinite; }
+.papillon--1 { animation-duration: 5s; animation-delay: -2s; }
+.papillon--3 { animation-duration: 7s; animation-delay: -4s; }
+.papillon--4 { animation-duration: 5.5s; animation-delay: -1s; }
+.papillon--1 img { animation-delay: -.8s; }
+.papillon--3 img { animation-delay: -1.9s; animation-duration: 3.8s; }
+.papillon--4 img { animation-delay: -2.6s; }
+@keyframes papillon-voltige {
+  0%, 100% { transform: translate(0, 0); }
+  33%      { transform: translate(-6px, -7px); }
+  66%      { transform: translate(5px, -3px); }
+}
+@keyframes battement {
+  0%, 40%, 100% { transform: scaleX(1); }
+  50%           { transform: scaleX(.45); }
+  60%           { transform: scaleX(1); }
+  70%           { transform: scaleX(.5); }
+  80%           { transform: scaleX(1); }
+}
 .encadre--papillons strong { color: var(--lavande-fonce); }
 @media (min-width: 560px) {
   .encadre--papillons { padding: 60px 54px 104px; }

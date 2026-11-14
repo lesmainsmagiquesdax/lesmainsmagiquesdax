@@ -88,6 +88,39 @@ if ('IntersectionObserver' in window && !moinsAnimations) {
 }
 
 
+// ---------- Fées et papillons qui bougent dans les cadres lumineux ----------
+// Chaque cadre « .encadre--papillons » reçoit ses fées et ses papillons animés.
+// (Sans animation, les mêmes images restent affichées, immobiles, par le CSS.)
+const decorsMagiques = [
+  { classe: 'fee fee--1', image: 'fee-verte-miroir.webp' },
+  { classe: 'papillon papillon--1', image: 'papillon-1.webp' },
+  { classe: 'papillon papillon--2', image: 'papillon-2.webp' },
+  { classe: 'fee fee--2', image: 'fee-verte.webp' },
+  { classe: 'papillon papillon--3', image: 'papillon-3.webp' },
+  { classe: 'fee fee--3', image: 'fee-verte.webp' },
+  { classe: 'papillon papillon--4', image: 'papillon-4.webp' },
+];
+if (!moinsAnimations) {
+  document.querySelectorAll('.encadre--papillons').forEach((cadre) => {
+    const decor = document.createElement('div');
+    decor.className = 'decor-magique';
+    decor.setAttribute('aria-hidden', 'true');
+    decorsMagiques.forEach(({ classe, image }) => {
+      const element = document.createElement('span');
+      element.className = 'decor ' + classe;
+      const img = document.createElement('img');
+      img.src = 'images/' + image;
+      img.alt = '';
+      img.decoding = 'async';
+      element.appendChild(img);
+      decor.appendChild(element);
+    });
+    cadre.prepend(decor);
+    cadre.classList.add('encadre--anime');
+  });
+}
+
+
 // ---------- Lien du menu de la section affichée ----------
 const liensMenu = document.querySelectorAll('.menu a[href^="#"]');
 if ('IntersectionObserver' in window && liensMenu.length) {
