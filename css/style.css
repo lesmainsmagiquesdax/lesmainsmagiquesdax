@@ -974,7 +974,8 @@ figure { margin: 0; }
 .couple__symbole { font-size: 4.5rem; filter: drop-shadow(0 6px 14px rgba(107, 90, 158, .35)); }
 @media (min-width: 720px) {
   .section .carte--couple { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.6fr; align-items: center; width: auto; }
-  .carte--couple .carte__image { height: 100%; aspect-ratio: auto; min-height: 260px; }
+  /* bande dessinée entière (bulles lisibles), en haut de la carte même si le texte est long */
+  .carte--couple .carte__image { height: auto; aspect-ratio: 800 / 1421; align-self: start; }
   .carte--couple .carte__image img { position: absolute; inset: 0; }
   .carte--couple .carte__corps { padding: 24px 32px; }
   .carte--couple .carte__icone { margin-top: 0; }
