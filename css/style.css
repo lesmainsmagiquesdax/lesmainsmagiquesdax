@@ -320,7 +320,7 @@ figure { margin: 0; }
 }
 .menu.ouvert { transform: none; opacity: 1; visibility: visible; }
 /* petits téléphones : le menu défile au lieu d'être coupé */
-@media (max-width: 1339px) { .menu { max-height: calc(100vh - var(--hauteur-entete)); overflow-y: auto; } }
+@media (max-width: 1419px) { .menu { max-height: calc(100vh - var(--hauteur-entete)); overflow-y: auto; } }
 .menu a:not(.bouton) {
   position: relative;
   padding: 10px 16px;
@@ -890,6 +890,59 @@ figure { margin: 0; }
   font-size: .95rem;
 }
 @media (max-width: 899px) { .section .distance__infos { justify-content: center; } }
+/* ---------- Rubrique « Mes tarifs » (tous les prix au même endroit) ---------- */
+.section--tarifs {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(155, 135, 201, .14), transparent 45%),
+    var(--creme);
+}
+.section.section--tarifs { padding-top: 40px; padding-bottom: 56px; }
+.tarifs {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 28px 20px 24px;
+  background: #fff;
+  border-radius: var(--rayon);
+  border-top: 4px solid var(--or-clair);
+  box-shadow: 0 20px 50px rgba(107, 90, 158, .14);
+}
+.tarifs__groupe + .tarifs__groupe { margin-top: 22px; }
+.section .tarifs__titre {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  text-align: left;
+  color: var(--lavande-fonce);
+  border-bottom: 1px solid var(--or-clair);
+  padding-bottom: 4px;
+}
+.tarifs__liste { list-style: none; margin: 0; padding: 0; }
+.tarifs__liste li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px dotted rgba(155, 135, 201, .45);
+}
+.tarifs__liste li:last-child { border-bottom: 0; }
+.tarifs__liste a { color: var(--texte); font-weight: 600; text-decoration: none; }
+.tarifs__liste a:hover { color: var(--lavande-fonce); text-decoration: underline; }
+.tarifs__liste small { grid-column: 1; display: block; font-size: .85rem; color: var(--texte-doux); }
+.tarifs__prix {
+  grid-column: 2; grid-row: 1 / span 2;
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--or);
+  white-space: nowrap;
+}
+.tarifs__prix small { display: inline; font-family: var(--police-texte); font-size: .8rem; color: var(--texte-doux); font-weight: 400; }
+.section .tarifs__don { margin: 22px 0 14px; text-align: center; font-size: .95rem; }
+.tarifs__don strong { color: var(--lavande-fonce); }
+.section .tarifs__rdv { margin: 0; text-align: center; }
+.sans-coupure { white-space: nowrap; }
+@media (min-width: 720px) { .tarifs { padding: 36px 48px 32px; } }
+
 /* ---------- Rubrique « Accompagnement émotionnel » ---------- */
 .section--accompagnement {
   background:
@@ -1425,8 +1478,8 @@ figure { margin: 0; }
 }
 
 /* Menu complet seulement sur les grands écrans (sinon menu « burger »)
-   1340px : largeur minimale pour que les 9 liens tiennent à côté du nom */
-@media (min-width: 1340px) {
+   1420px : largeur minimale pour que les 10 liens tiennent à côté du nom */
+@media (min-width: 1420px) {
   .entete { padding: 0 32px; }
   .menu-bouton { display: none; }
   .menu {
