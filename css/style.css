@@ -320,7 +320,7 @@ figure { margin: 0; }
 }
 .menu.ouvert { transform: none; opacity: 1; visibility: visible; }
 /* petits téléphones : le menu défile au lieu d'être coupé */
-@media (max-width: 1419px) { .menu { max-height: calc(100vh - var(--hauteur-entete)); overflow-y: auto; } }
+@media (max-width: 1459px) { .menu { max-height: calc(100vh - var(--hauteur-entete)); overflow-y: auto; } }
 .menu a:not(.bouton) {
   position: relative;
   padding: 10px 16px;
@@ -1482,8 +1482,8 @@ figure { margin: 0; }
 }
 
 /* Menu complet seulement sur les grands écrans (sinon menu « burger »)
-   1420px : largeur minimale pour que les 10 liens tiennent à côté du nom */
-@media (min-width: 1420px) {
+   1460px : largeur minimale pour que les 10 liens tiennent à côté du nom */
+@media (min-width: 1460px) {
   .entete { padding: 0 32px; }
   .menu-bouton { display: none; }
   .menu {
