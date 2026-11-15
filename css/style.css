@@ -342,6 +342,10 @@ figure { margin: 0; }
 .menu a:not(.bouton):hover, .menu a.actif { color: var(--lavande-fonce); }
 .menu .bouton { margin-top: 8px; }
 .menu a { white-space: nowrap; }  /* un lien du menu ne se coupe jamais en deux */
+/* Lien « Quand l'émotionnel se ressent dans le corps » : titre complet dans le menu du téléphone
+   (sur 2 lignes si besoin), version courte « L'émotionnel » dans le menu des grands écrans */
+.menu a.menu__lien-long { white-space: normal; text-align: center; max-width: 90vw; text-wrap: balance; }
+.menu__court { display: none; }
 
 /* ---------- 5. ACCUEIL ---------- */
 .accueil {
@@ -1495,6 +1499,9 @@ figure { margin: 0; }
   .menu a:not(.bouton) { font-size: 1rem; padding: 8px 12px; }
   .menu a:not(.bouton)::after { left: 12px; right: 12px; bottom: 4px; }
   .menu .bouton { margin: 0 0 0 8px; }
+  .menu a.menu__lien-long { white-space: nowrap; max-width: none; }
+  .menu__long { display: none; }
+  .menu__court { display: inline; }
   .logo--grand { width: 170px; height: 184px; }
 }
 
