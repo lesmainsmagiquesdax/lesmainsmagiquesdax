@@ -901,6 +901,7 @@ figure { margin: 0; }
     var(--creme);
 }
 .section.section--tarifs { padding-top: 40px; padding-bottom: 56px; }
+.section .tarifs__citation { max-width: 700px; margin: 0 auto 2em; font-size: clamp(1.4rem, 4vw, 1.75rem); text-wrap: balance; }
 .tarifs {
   max-width: 820px;
   margin: 0 auto;
@@ -941,9 +942,18 @@ figure { margin: 0; }
   white-space: nowrap;
 }
 .tarifs__prix small { display: inline; font-family: var(--police-texte); font-size: .8rem; color: var(--texte-doux); font-weight: 400; }
-.section .tarifs__don { margin: 22px 0 14px; text-align: center; font-size: .95rem; }
-.tarifs__don strong { color: var(--lavande-fonce); }
-.section .tarifs__rdv { margin: 0; text-align: center; }
+/* Ligne « Don libre » dans la grille des tarifs : mise en valeur, bien lisible */
+.tarifs__liste li.tarifs__ligne-don {
+  margin-top: 4px;
+  padding: 14px 14px;
+  background: var(--lavande-pale);
+  border: 1px solid var(--or-clair);
+  border-radius: 12px;
+}
+.tarifs__ligne-don > span:first-child { font-weight: 600; font-size: 1.1rem; color: var(--lavande-fonce); }
+.tarifs__ligne-don small { font-size: .95rem; }
+.tarifs__ligne-don .tarifs__prix { font-size: 1.5rem; color: var(--lavande-fonce); }
+.section .tarifs__rdv { margin: 28px 0 0; text-align: center; }
 .sans-coupure { white-space: nowrap; }
 @media (min-width: 720px) { .tarifs { padding: 36px 48px 32px; } }
 
@@ -1264,18 +1274,21 @@ figure { margin: 0; }
 }
 
 /* Mention « don libre », sous les cartes des soins */
+/* Don libre : bien visible, assumé (texte plus grand que le texte courant) */
 .section .don-libre {
-  max-width: 560px;
+  max-width: 640px;
   margin: 32px auto 0;
-  padding: 14px 22px;
+  padding: 18px 26px;
   text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.55;
   background: #fff;
-  border: 1px solid var(--or-clair);
+  border: 2px solid var(--or-clair);
   border-radius: var(--rayon);
   box-shadow: var(--ombre);
   color: var(--texte);
 }
-.don-libre strong { color: var(--lavande-fonce); }
+.don-libre strong { color: var(--lavande-fonce); font-size: 1.1em; }
 .don-libre::before { content: "✦ "; color: var(--or); }
 
 .avertissement {
