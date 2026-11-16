@@ -1831,6 +1831,11 @@ figure { margin: 0; }
   box-shadow: 0 20px 50px rgba(107, 90, 158, .3);
 }
 .seance-image figcaption { margin-top: 12px; text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }
+/* Téléphone : version allongée de l'image (texte plus gros), plus large, sans « cliquez pour agrandir » */
+@media (max-width: 600px) {
+  .seance-image { padding-left: 8px; padding-right: 8px; }
+  .seance-image__aide { display: none; }
+}
 
 /* Image « L'univers vit en nous » : entre le bandeau « Pourquoi holistique ? » et « Mes soins » */
 .section.section--univers { padding: 48px 16px 32px; }
