@@ -1634,6 +1634,42 @@ figure { margin: 0; }
 /* Article : sous-titres (h3) */
 .page-simple h3 { margin: 1.4em 0 .4em; font-size: 1.35rem; color: #9c7631; }
 
+/* Article « Corps & émotions » : tout l'article dans le cadre lumineux à fées et papillons */
+.encadre.article-cadre { margin: 0 0 2em; padding: 84px 22px 92px; }
+@media (min-width: 560px) { .encadre.article-cadre { padding: 72px 52px 104px; } }
+.article-cadre .article__rubrique, .article-cadre h1 { text-align: center; }
+.article-cadre .article__chapeau { text-align: center; }
+.article-cadre .article__auteur { text-align: center; }
+
+/* Article « Corps & émotions » : listes d'auteurs, tableau d'exemples, encadré « À retenir » */
+.auteurs { padding-left: 1.2em; margin: 0 0 1.2em; }
+.auteurs li { margin: 0 0 .7em; line-height: 1.6; }
+.auteurs li::marker { color: var(--or); }
+.page-simple .auteurs li, .page-simple .a-retenir p { text-align: left; }
+.tableau-exemples { margin: 0 0 1.6em; }
+.tableau-exemples table { width: 100%; border-collapse: collapse; font-size: .95rem; background: #fff; border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre); }
+.tableau-exemples thead th { background: var(--lavande-pale); color: var(--lavande-fonce); font-weight: 600; text-align: left; padding: 10px 12px; }
+.tableau-exemples th[scope="row"] { text-align: left; color: var(--texte); font-weight: 700; }
+.tableau-exemples tbody th, .tableau-exemples td { padding: 10px 12px; border-top: 1px solid rgba(155, 135, 201, .3); vertical-align: top; line-height: 1.5; }
+.tableau-exemples td em { color: var(--texte-doux); }
+/* Téléphone : chaque ligne du tableau devient une petite carte */
+@media (max-width: 640px) {
+  .tableau-exemples table, .tableau-exemples tbody, .tableau-exemples tr, .tableau-exemples th, .tableau-exemples td { display: block; width: 100%; }
+  .tableau-exemples table { background: none; box-shadow: none; }
+  .tableau-exemples thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tableau-exemples tr { background: #fff; border: 1px solid var(--or-clair); border-radius: var(--rayon); margin-bottom: 12px; padding: 4px 0; box-shadow: var(--ombre); }
+  .tableau-exemples tbody th, .tableau-exemples td { border-top: 0; padding: 6px 16px; }
+  .tableau-exemples tbody th { font-size: 1.05rem; color: var(--lavande-fonce); }
+  .tableau-exemples td::before { content: attr(data-titre) " : "; display: block; font-size: .8rem; font-weight: 600; color: #9c7631; text-transform: uppercase; letter-spacing: .06em; }
+}
+.a-retenir { margin: 2em 0; padding: 18px 22px; background: var(--lavande-pale); border-left: 4px solid var(--lavande); border-radius: 0 var(--rayon) var(--rayon) 0; }
+.a-retenir h2 { margin-top: 0; font-size: 1.4rem; }
+.a-retenir h2::after { display: none; }
+.a-retenir p { margin: 0; }
+.liens-sources { padding-left: 1.2em; margin: 0 0 1.4em; display: grid; gap: 4px; font-size: .92rem; }
+.liens-sources a { overflow-wrap: anywhere; }
+.page-simple .article__avertissement { text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }
+
 /* Article : grande photo (cascade) */
 .article__visuel--large { max-width: 560px; }
 .article__credit { font-size: .82rem; font-style: normal; opacity: .85; }
@@ -1690,6 +1726,8 @@ figure { margin: 0; }
 .emotion { display: grid; gap: 28px; align-items: center; max-width: 980px; margin: 3em auto 2em; }
 .emotion .encadre { margin: 0; }
 .emotion .encadre--papillons p { text-align: left; }   /* lecture plus douce, sans grands blancs */
+.section .emotion .encadre__article { margin: 1.2em 0 0; text-align: center; font-weight: 600; }
+.encadre__article a { color: var(--lavande-fonce); }
 .emotion__image { margin: 0 auto; max-width: 420px; }
 .emotion__image img {
   display: block; width: 100%; height: auto;
