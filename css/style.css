@@ -983,7 +983,7 @@ figure { margin: 0; }
 .section .accompagnement__intro { margin-bottom: .5em; font-weight: 600; color: var(--lavande-fonce); text-align: left; }
 .accompagnement .citation { margin: 1.4em 0 .6em; font-size: 1.55rem; }
 .section .accompagnement__rappel { margin: 0; text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }
-@media (max-width: 559px) { .section .accompagnement p:not(.citation):not(.accompagnement__rappel):not(.accompagnement__prix):not(.accompagnement__sous-titre) { text-align: left; } }
+@media (max-width: 559px) { .section .accompagnement p:not(.citation):not(.accompagnement__rappel):not(.accompagnement__prix):not(.accompagnement__sous-titre):not(.encadre__article) { text-align: left; } }
 
 /* Moins d'espace entre « Mes soins » et la rubrique « Le soin à distance » */
 .section.section--soins { padding-bottom: 40px; }
@@ -1641,6 +1641,63 @@ figure { margin: 0; }
 .article-cadre .article__chapeau { text-align: center; }
 .article-cadre .article__auteur { text-align: center; }
 
+/* Cadre « nature » (article Se reconnecter) : guirlandes de feuillage et de fleurs en haut et en bas,
+   fine tige fleurie sur les côtés, en plus des fées et des papillons */
+.cadre-nature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url('../images/nature-haut.svg') center top 4px / min(62%, 440px) auto no-repeat,
+    url('../images/nature-bas.svg') center bottom 4px / min(62%, 440px) auto no-repeat;
+  opacity: .85;
+}
+.nature-cotes {
+  position: absolute;
+  inset: 130px 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url('../images/nature-cote.svg') left 1px top / 16px auto repeat-y,
+    url('../images/nature-cote.svg') right 1px top 120px / 16px auto repeat-y;
+  opacity: .6;
+}
+.encadre.cadre-nature { padding-left: 28px; padding-right: 28px; }
+@media (min-width: 560px) {
+  .nature-cotes { background-size: 22px auto, 22px auto; background-position: left 4px top, right 4px top 120px; }
+  .encadre.cadre-nature { padding-left: 56px; padding-right: 56px; }
+}
+
+/* Article « Se reconnecter » : note, encadré d'alerte, points numérotés, transformations */
+.page-simple .protocole__note { font-size: .92rem; color: var(--texte-doux); text-align: center; }
+.alerte { margin: 1.6em 0 2em; padding: 18px 22px; background: #fbeff0; border-left: 4px solid #b4545a; border-radius: 0 var(--rayon) var(--rayon) 0; }
+.page-simple .alerte h2 { margin: 0 0 .4em; font-size: 1.35rem; color: #a0434b; }
+.alerte h2::after { display: none; }
+.alerte ul { margin: 0 0 .8em; padding-left: 1.2em; }
+.alerte li { margin-bottom: .3em; }
+.alerte p, .alerte li { text-align: left; }
+.alerte p:last-child { margin-bottom: 0; }
+.alerte a { color: #a0434b; }
+.points { list-style: none; counter-reset: point; padding: 0; margin: 0 0 1.6em; }
+.points > li { counter-increment: point; position: relative; padding-left: 42px; margin-bottom: 1em; }
+.points > li::before {
+  content: counter(point);
+  position: absolute; left: 0; top: 2px;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--lavande-fonce);
+  color: #fff;
+  font-size: .85rem; font-weight: 600;
+}
+.points p { margin: 0 0 .25em; text-align: left; line-height: 1.6; }
+.points strong { color: var(--lavande-fonce); }
+.transfo__negatif { font-weight: 700; color: #a0434b; }
+.transfo__etiquette { display: inline-block; margin-right: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--lavande-fonce); }
+.transfo__etiquette--positif { color: #3f8f5f; }
+
 /* Article « Corps & émotions » : listes d'auteurs, tableau d'exemples, encadré « À retenir » */
 .auteurs { padding-left: 1.2em; margin: 0 0 1.2em; }
 .auteurs li { margin: 0 0 .7em; line-height: 1.6; }
@@ -1726,7 +1783,8 @@ figure { margin: 0; }
 .emotion { display: grid; gap: 28px; align-items: center; max-width: 980px; margin: 3em auto 2em; }
 .emotion .encadre { margin: 0; }
 .emotion .encadre--papillons p { text-align: left; }   /* lecture plus douce, sans grands blancs */
-.section .emotion .encadre__article { margin: 1.2em 0 0; text-align: center; font-weight: 600; }
+.section .emotion .encadre__article,
+.section .accompagnement .encadre__article { margin: 1.2em 0 0; text-align: center; font-weight: 600; }
 .encadre__article a { color: var(--lavande-fonce); }
 .emotion__image { margin: 0 auto; max-width: 420px; }
 .emotion__image img {
