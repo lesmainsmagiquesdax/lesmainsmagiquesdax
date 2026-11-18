@@ -1553,6 +1553,8 @@ figure { margin: 0; }
   margin-bottom: 1.6em;
   border-bottom: 1px solid var(--or-clair);
 }
+/* Mention « Publié aussi dans le groupe Facebook… » sous l'auteur */
+.article__publie { display: block; margin-top: .5em; }
 
 /* Les 5 phrases : une carte par phrase, ✗ en rouge doux, ✓ en vert doux */
 .phrases { list-style: none; padding: 0; margin: 0 0 2em; display: grid; gap: 14px; }
@@ -1723,6 +1725,17 @@ figure { margin: 0; }
 .a-retenir h2 { margin-top: 0; font-size: 1.4rem; }
 .a-retenir h2::after { display: none; }
 .a-retenir p { margin: 0; }
+/* Conte « Le miroir magique » : la phrase finale de la morale */
+.page-simple .a-retenir .conte__morale {
+  margin-top: 1em;
+  text-align: center;
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  color: #9c7631;               /* doré foncé, lisible sur le fond lavande */
+}
+.article__visuel a { display: block; }
 .liens-sources { padding-left: 1.2em; margin: 0 0 1.4em; display: grid; gap: 4px; font-size: .92rem; }
 .liens-sources a { overflow-wrap: anywhere; }
 .page-simple .article__avertissement { text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }
