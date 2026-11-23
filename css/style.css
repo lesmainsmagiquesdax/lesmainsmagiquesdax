@@ -1970,6 +1970,9 @@ figure { margin: 0; }
   color: #9c7631;
 }
 @media (min-width: 900px) { .duo--inverse .duo__photo { order: 2; } }
+/* « Un soin de l'âme » : image « Méditation cosmique » en plus grand */
+.duo__photo--grande .duo__image { max-width: 580px; }
+@media (min-width: 900px) { .duo--image-grande { grid-template-columns: 1fr 1.4fr; } }
 
 /* Lien vers la page « Mon cabinet » (partie contact de l'accueil) */
 .lien-cabinet { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
