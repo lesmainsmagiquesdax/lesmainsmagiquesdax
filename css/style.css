@@ -1088,6 +1088,8 @@ figure { margin: 0; }
 .distance__soin h3 span { font-family: var(--police-texte); font-size: .95rem; font-weight: 400; color: var(--texte-doux); white-space: nowrap; }
 .distance__soin h3 .carte__prix { font-size: 1.5rem; }
 .section .distance__soin p { margin: 0; text-align: left; }
+/* Soin en voyage chamanique : mention du support (le conte illustré) */
+.section .distance__soin .distance__support { margin-top: .7em; padding-top: .6em; border-top: 1px dashed var(--or-clair); font-size: .95rem; }
 /* Image du soin en voyage chamanique (l'arbre de vie) */
 .distance__image { margin: .5em auto .9em; max-width: 420px; }
 .distance__image img { display: block; width: 100%; height: auto; border-radius: calc(var(--rayon) - 4px); }
