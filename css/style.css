@@ -1088,6 +1088,9 @@ figure { margin: 0; }
 .distance__soin h3 span { font-family: var(--police-texte); font-size: .95rem; font-weight: 400; color: var(--texte-doux); white-space: nowrap; }
 .distance__soin h3 .carte__prix { font-size: 1.5rem; }
 .section .distance__soin p { margin: 0; text-align: left; }
+/* Image du soin en voyage chamanique (l'arbre de vie) */
+.distance__image { margin: .5em auto .9em; max-width: 420px; }
+.distance__image img { display: block; width: 100%; height: auto; border-radius: calc(var(--rayon) - 4px); }
 
 /* Carte « Soin à distance » dans « Mes soins » : mise en avant */
 .carte--distance { border: 2px solid var(--lavande); box-shadow: 0 18px 44px rgba(107, 90, 158, .28); }
