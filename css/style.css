@@ -1092,6 +1092,13 @@ figure { margin: 0; }
 .distance__image { margin: .5em auto .9em; max-width: 420px; }
 .distance__image img { display: block; width: 100%; height: auto; border-radius: calc(var(--rayon) - 4px); }
 
+/* Ordinateur : dans « Les soins à distance » et « Initiations », la grande image reste en haut,
+   à côté du titre, au lieu d'être centrée sur le texte (elle ne se retrouve plus à côté de la 2e image) */
+@media (min-width: 900px) {
+  .section--distance .duo, .section--energie .duo { align-items: start; }
+  .section--distance .duo > .duo__image, .section--energie .duo > .duo__image { margin-top: 8px; }
+}
+
 /* Carte « Soin à distance » dans « Mes soins » : mise en avant */
 .carte--distance { border: 2px solid var(--lavande); box-shadow: 0 18px 44px rgba(107, 90, 158, .28); }
 .carte--distance .carte__image img { object-position: center 30%; }
