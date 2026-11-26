@@ -311,6 +311,69 @@ if (formTemoignage) {
 }
 
 
+// ---------- Carrousel (« La rencontre des âmes ») : flèches, compteur et points ----------
+// Sans JavaScript, on fait simplement défiler les pages au doigt ou à la souris.
+document.querySelectorAll('.carrousel').forEach((carrousel) => {
+  const piste = carrousel.querySelector('.carrousel__piste');
+  const pages = Array.from(piste.children);
+  const nav = carrousel.querySelector('.carrousel__nav');
+  const precedent = carrousel.querySelector('.carrousel__fleche--prec');
+  const suivant = carrousel.querySelector('.carrousel__fleche--suiv');
+  const compteur = carrousel.querySelector('.carrousel__compteur');
+  const zonePoints = carrousel.querySelector('.carrousel__points');
+  const doux = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!pages.length) return;
+
+  const points = pages.map((page, i) => {
+    const point = document.createElement('button');
+    point.type = 'button';
+    point.className = 'carrousel__point';
+    point.setAttribute('aria-label', i === 0 ? 'Couverture' : `Page ${i}`);
+    point.addEventListener('click', () => aller(i));
+    zonePoints.appendChild(point);
+    return point;
+  });
+
+  // Page affichée = celle dont le bord gauche est le plus proche du défilement actuel
+  const pageActuelle = () => {
+    const depart = pages[0].offsetLeft;
+    let meilleure = 0;
+    pages.forEach((page, i) => {
+      if (Math.abs(page.offsetLeft - depart - piste.scrollLeft)
+          < Math.abs(pages[meilleure].offsetLeft - depart - piste.scrollLeft)) meilleure = i;
+    });
+    return meilleure;
+  };
+  const aller = (i) => {
+    const cible = Math.max(0, Math.min(pages.length - 1, i));
+    piste.scrollTo({ left: pages[cible].offsetLeft - pages[0].offsetLeft, behavior: doux ? 'smooth' : 'auto' });
+  };
+  const mettreAJour = () => {
+    const i = pageActuelle();
+    compteur.textContent = `${i + 1} / ${pages.length}`;
+    precedent.disabled = i === 0;
+    suivant.disabled = i === pages.length - 1;
+    points.forEach((point, n) => point.setAttribute('aria-current', n === i ? 'true' : 'false'));
+  };
+
+  precedent.addEventListener('click', () => aller(pageActuelle() - 1));
+  suivant.addEventListener('click', () => aller(pageActuelle() + 1));
+  piste.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); aller(pageActuelle() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); aller(pageActuelle() - 1); }
+  });
+  let attente = 0;
+  piste.addEventListener('scroll', () => {
+    cancelAnimationFrame(attente);
+    attente = requestAnimationFrame(mettreAJour);
+  }, { passive: true });
+
+  nav.hidden = false;
+  zonePoints.hidden = false;
+  mettreAJour();
+});
+
+
 // ---------- Année automatique dans le pied de page ----------
 const annee = document.getElementById('annee');
 if (annee) annee.textContent = new Date().getFullYear();

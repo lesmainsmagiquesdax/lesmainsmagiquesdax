@@ -1755,6 +1755,112 @@ figure { margin: 0; }
   color: #9c7631;               /* doré foncé, lisible sur le fond lavande */
 }
 .article__visuel a { display: block; }
+/* ---------- Carrousel « La rencontre des âmes » : le dessin puis les pages, une par une ---------- */
+.carrousel__aide { text-align: center; font-size: .9rem; color: var(--texte-doux); margin: 0 0 .8em; }
+.carrousel { position: relative; max-width: 560px; margin: 0 auto 1em; }
+.carrousel__piste {
+  display: flex; gap: 14px;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none;
+  border-radius: 20px;
+}
+.carrousel__piste::-webkit-scrollbar { display: none; }
+.carrousel__piste:focus-visible { outline: 2px solid var(--lavande); outline-offset: 4px; }
+.carrousel__page { flex: 0 0 100%; scroll-snap-align: center; display: flex; margin: 0; }
+.carrousel__page > .carte-ame { flex: 1; margin: 0; }
+/* Page du dessin : même cadre étoilé que les pages de texte, l'image au centre */
+.carte-ame--image { justify-content: center; align-items: center; }
+.carte-ame--image img {
+  position: relative; z-index: 1;
+  display: block; width: 100%; height: auto; max-width: 440px;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(217, 185, 104, .6), 0 10px 30px rgba(0, 0, 0, .5);
+}
+.carte-ame--image figcaption { margin-top: 1.4em; }
+
+/* Une page : nuit étoilée, double cadre doré, plumes en haut, clés en bas */
+.carte-ame {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 58px 34px 52px;
+  border-radius: 20px;
+  color: #f4ecd9;
+  background:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,.75), transparent 60%),
+    radial-gradient(1px 1px at 82% 12%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(1.2px 1.2px at 68% 34%, rgba(255,244,208,.7), transparent 60%),
+    radial-gradient(1px 1px at 24% 62%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(1.4px 1.4px at 90% 70%, rgba(255,255,255,.7), transparent 60%),
+    radial-gradient(1px 1px at 46% 88%, rgba(255,244,208,.6), transparent 60%),
+    radial-gradient(1px 1px at 6% 82%, rgba(255,255,255,.5), transparent 60%),
+    radial-gradient(1.2px 1.2px at 56% 6%, rgba(255,255,255,.6), transparent 60%),
+    radial-gradient(ellipse at 50% 30%, #102545 0%, #0a1830 45%, #050b18 100%);
+  box-shadow: 0 18px 40px rgba(20, 20, 60, .35);
+}
+/* double filet doré */
+.carte-ame::after {
+  content: ""; position: absolute; inset: 9px;
+  border: 1px solid rgba(217, 185, 104, .75);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 4px rgba(5, 11, 24, .9), inset 0 0 0 5px rgba(217, 185, 104, .45);
+  pointer-events: none;
+}
+/* plumes (haut) et clés (bas) dans les coins */
+.carte-ame::before {
+  content: ""; position: absolute; inset: 14px 16px; pointer-events: none;
+  background:
+    url("../images/ame-plume.svg") left top / 40px auto no-repeat,
+    url("../images/ame-plume-droite.svg") right top / 40px auto no-repeat,
+    url("../images/ame-cle.svg") left bottom / 22px auto no-repeat,
+    url("../images/ame-cle.svg") right bottom / 22px auto no-repeat;
+  opacity: .95;
+}
+.carte-ame__titre {
+  margin: 0 0 1.1em; padding: 0 30px .7em;   /* marges : le titre ne touche pas les plumes */
+  text-align: center;
+  font-family: var(--police-titre); font-weight: 600;
+  font-size: .95rem; letter-spacing: .14em; text-transform: uppercase;
+  color: #e6c97e;
+  border-bottom: 1px solid rgba(217, 185, 104, .5);
+}
+.carte-ame__texte { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.page-simple .carte-ame__texte p {
+  margin: 0 0 1em;
+  font-family: var(--police-titre);
+  font-size: 1.32rem; line-height: 1.7; letter-spacing: .01em;
+  color: #f4ecd9; text-align: left;
+}
+.page-simple .carte-ame__texte p:last-child { margin-bottom: 0; }
+.page-simple .carte-ame__texte .carte-ame__fort { font-style: italic; color: #f0d58f; }
+.carte-ame--courte .carte-ame__texte p { text-align: center; font-size: 1.45rem; }
+.carte-ame__signature { margin: 1.4em 0 0; text-align: center; font-family: var(--police-signature); font-size: 1.7rem; color: #e6c97e; line-height: 1.2; }
+.carte-ame__signature span { display: block; font-family: var(--police-titre); font-size: .95rem; letter-spacing: .08em; color: #f4ecd9; }
+.carte-ame__num { margin: 1.2em 0 0; text-align: center; font-size: .85rem; letter-spacing: .1em; color: #d9b968; }
+@media (max-width: 559px) {
+  .carte-ame { padding: 52px 24px 48px; }
+  .page-simple .carte-ame__texte p { font-size: 1.2rem; line-height: 1.65; }
+  .carte-ame--courte .carte-ame__texte p { font-size: 1.32rem; }
+  .carte-ame::before { background-size: 32px auto, 32px auto, 18px auto, 18px auto; }
+  .carte-ame__titre { padding-left: 26px; padding-right: 26px; font-size: .88rem; letter-spacing: .1em; }
+}
+
+/* Flèches, compteur et points */
+.carrousel__nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 14px; }
+.carrousel__nav[hidden], .carrousel__points[hidden] { display: none; }
+.carrousel__fleche {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--or-clair); background: #fff; color: var(--lavande-fonce);
+  font-size: 1.7rem; line-height: 1; cursor: pointer;
+  box-shadow: var(--ombre);
+  transition: background .2s, transform .2s;
+}
+.carrousel__fleche:hover { background: var(--lavande-pale); transform: scale(1.06); }
+.carrousel__fleche:disabled { opacity: .35; cursor: default; transform: none; }
+.carrousel__compteur { min-width: 4.5em; text-align: center; font-size: .95rem; color: var(--texte-doux); }
+.carrousel__points { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.carrousel__point { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 0; background: var(--or-clair); cursor: pointer; }
+.carrousel__point[aria-current="true"] { background: var(--lavande-fonce); transform: scale(1.25); }
 .liens-sources { padding-left: 1.2em; margin: 0 0 1.4em; display: grid; gap: 4px; font-size: .92rem; }
 .liens-sources a { overflow-wrap: anywhere; }
 .page-simple .article__avertissement { text-align: center; font-size: .85rem; font-style: italic; color: var(--texte-doux); }

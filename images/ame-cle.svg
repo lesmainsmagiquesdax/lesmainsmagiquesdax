@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 80" width="30" height="80">
+  <!-- Clé dorée (coins bas des pages « La rencontre des âmes ») -->
+  <g fill="none" stroke="#d9b968" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="15" cy="13" r="9"/>
+    <path d="M15 6.5l2 4.5 4.5 2-4.5 2-2 4.5-2-4.5-4.5-2 4.5-2z" fill="#d9b968" fill-opacity=".5" stroke-width="1.2"/>
+    <path d="M10.5 25h9M15 22v53"/>
+    <path d="M15 60h8v5h-3M15 68h7v4"/>
+  </g>
+</svg>
